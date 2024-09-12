@@ -12,6 +12,19 @@ from milvus_retriever_with_score_threshold import MilvusRetrieverWithScoreThresh
 from queue import Empty, Queue
 from threading import Thread
 
+import pymongo
+from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+from langchain_community.vectorstores.azure_cosmos_db import (
+    AzureCosmosDBVectorSearch,
+    CosmosDBSimilarityType,
+    CosmosDBVectorSearchType
+)
+from langchain_community.retrievers import AzureAISearchRetriever
+
+from azure.search.documents import SearchClient
+from azure.search.documents.models import VectorizedQuery
+from azure.core.credentials import AzureKeyCredential
+
 
 class QueueCallback(BaseCallbackHandler):
     """Callback handler for streaming LLM responses to a queue."""
@@ -74,56 +87,80 @@ class Chatbot:
     def format_sources(self, input_list):
         sources = ""
         if len(input_list) != 0:
-            sources += input_list[0].metadata["source"] + ', page: ' + str(input_list[0].metadata["page"])
-            page_list = [input_list[0].metadata["page"]]
+            sources += input_list[0].metadata["title"] + ', page: ' + str(input_list[0].metadata["chunk_id"])
+            page_list = [input_list[0].metadata["chunk_id"]]
             for item in input_list:
-                if item.metadata["page"] not in page_list: # Avoid duplicates
-                    page_list.append(item.metadata["page"])
-                    sources += ', ' + str(item.metadata["page"])
+                if item.metadata["chunk_id"] not in page_list: # Avoid duplicates
+                    page_list.append(item.metadata["chunk_id"])
+                    sources += ', ' + str(item.metadata["chunk_id"])
         return sources
 
     def stream(self, query, claim) -> Generator:
         # A Queue is needed for Streaming implementation
         q = Queue()
         job_done = object()
+        ai_service = os.getenv("AI_SERVICE")
 
-        llm = VLLMOpenAI(
-            openai_api_key="EMPTY",
-            openai_api_base=self.config["INFERENCE_SERVER_URL"],
-            model_name=self.config["MODEL_NAME"],
-            max_tokens=int(self.config["MAX_TOKENS"]),
-            top_p=float(self.config["TOP_P"]),
-            temperature=float(self.config["TEMPERATURE"]),
-            presence_penalty=float(self.config["PRESENCE_PENALTY"]),
-            streaming=True,
-            verbose=False,
-            callbacks=[QueueCallback(q, self.logger)],
-        )
+        if ai_service == "vllm":
 
-        """ conversation_chain = ConversationChain(
-            llm=llm,
-            prompt=self.PROMPT,
-            verbose=True
-        ) """
+            llm = VLLMOpenAI(
+                openai_api_key="EMPTY",
+                openai_api_base=self.config["INFERENCE_SERVER_URL"],
+                model_name=self.config["MODEL_NAME"],
+                max_tokens=int(self.config["MAX_TOKENS"]),
+                top_p=float(self.config["TOP_P"]),
+                temperature=float(self.config["TEMPERATURE"]),
+                presence_penalty=float(self.config["PRESENCE_PENALTY"]),
+                streaming=True,
+                verbose=False,
+                callbacks=[QueueCallback(q, self.logger)],
+            )
 
-        retriever = MilvusRetrieverWithScoreThreshold(
-            embedding_function=self.embeddings,
-            collection_name=self.config["MILVUS_COLLECTION"],
-            collection_description="",
-            collection_properties=None,
-            connection_args={
-                "host": self.config.get("MILVUS_HOST", "default_host"),
-                "port": self.config.get("MILVUS_PORT", "default_port"),
-                "user": self.config.get("MILVUS_USERNAME", "default_username"),
-                "password": self.config.get("MILVUS_PASSWORD", "default_password"),
-            },
-            consistency_level="Session",
-            search_params=None,
-            k=int(self.config.get("MAX_RETRIEVED_DOCS", 4)),
-            score_threshold=float(self.config.get("SCORE_THRESHOLD", 0.99)),
-            metadata_field="metadata",
-            text_field="page_content",
-        )
+            """ conversation_chain = ConversationChain(
+                llm=llm,
+                prompt=self.PROMPT,
+                verbose=True
+            ) """
+
+            retriever = MilvusRetrieverWithScoreThreshold(
+                embedding_function=self.embeddings,
+                collection_name=self.config["MILVUS_COLLECTION"],
+                collection_description="",
+                collection_properties=None,
+                connection_args={
+                    "host": self.config.get("MILVUS_HOST", "default_host"),
+                    "port": self.config.get("MILVUS_PORT", "default_port"),
+                    "user": self.config.get("MILVUS_USERNAME", "default_username"),
+                    "password": self.config.get("MILVUS_PASSWORD", "default_password"),
+                },
+                consistency_level="Session",
+                search_params=None,
+                k=int(self.config.get("MAX_RETRIEVED_DOCS", 4)),
+                score_threshold=float(self.config.get("SCORE_THRESHOLD", 0.99)),
+                metadata_field="metadata",
+                text_field="page_content",
+            )
+        elif ai_service == "azure":
+
+            azure_openai_api_key = os.getenv("AZURE_OPENAI_API_KEY")
+            azure_openai_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+            openai_api_version = os.getenv("OPENAI_API_VERSION")
+            azure_ai_search_service_name = os.getenv("AZURE_AI_SEARCH_SERVICE_NAME")
+            azure_ai_search_index_name = os.getenv("AZURE_AI_SEARCH_INDEX_NAME")
+            azure_ai_search_api_key = os.getenv("AZURE_AI_SEARCH_API_KEY")
+
+            llm = AzureChatOpenAI(
+                azure_deployment = os.getenv("AZURE_DEPLOYMENT")
+            )
+
+            embeddings = AzureOpenAIEmbeddings(
+                azure_deployment = os.getenv("AZURE_EMBEDDING")
+            )
+
+            retriever = AzureAISearchRetriever(
+                content_key="chunk", top_k=5, index_name=azure_ai_search_index_name
+            )
+
 
         # Inject claim summary into the prompt
         if claim != "":

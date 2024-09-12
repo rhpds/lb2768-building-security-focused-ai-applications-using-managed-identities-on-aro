@@ -8,6 +8,7 @@ from typing import List
 import json
 
 import boto3
+from azure.storage.blob import BlobServiceClient
 import data_classes
 import db_utils
 import chatbot
@@ -54,13 +55,29 @@ app.add_middleware(
 # Initialize DB
 db = db_utils.Database(config, logger)
 
-# Initialize S3
-s3 = boto3.client(
-    's3',
-    endpoint_url=config["S3_ENDPOINT_URL"],
-    aws_access_key_id=config["AWS_ACCESS_KEY_ID"],
-    aws_secret_access_key=config["AWS_SECRET_ACCESS_KEY"],
-    use_ssl=config["S3_ENDPOINT_URL"].startswith("https"),)
+def get_storage_client():
+    storage_service = os.getenv("STORAGE_SERVICE")
+
+    if storage_service == "aws":
+        s3 = boto3.client(
+            's3',
+            endpoint_url=config["S3_ENDPOINT_URL"],
+            aws_access_key_id=config["AWS_ACCESS_KEY_ID"],
+            aws_secret_access_key=config["AWS_SECRET_ACCESS_KEY"],
+            use_ssl=config["S3_ENDPOINT_URL"].startswith("https"),
+        )
+        return s3
+    elif storage_service == "azure":
+        blob_service_client = BlobServiceClient(
+            account_url=config["AZURE_BLOB_ACCOUNT_URL"],
+            credential=config["AZURE_BLOB_CREDENTIAL"]
+        )
+        return blob_service_client
+    else:
+        raise ValueError("Unsupported storage service specified")
+
+# Initialize Storage Client
+storage_client = get_storage_client()
 
 # Initialize Chatbot
 chatbot = chatbot.Chatbot(config, logger)
@@ -211,7 +228,7 @@ class SPAStaticFiles(StaticFiles):
         if len(sys.argv) > 1 and sys.argv[1] == "dev":
             # We are in Dev mode, proxy to the React dev server
             async with httpx.AsyncClient() as client:
-                response = await client.get(f"http://localhost:9000/{path}")
+                response = await client.get(f"http://localhost:5000/{path}")
             return Response(response.text, status_code=response.status_code)
         else:
             try:

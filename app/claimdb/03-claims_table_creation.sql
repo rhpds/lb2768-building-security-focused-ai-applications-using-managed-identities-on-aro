@@ -11,10 +11,8 @@ CREATE SEQUENCE IF NOT EXISTS claims.claims_id_seq
     START 1
     MINVALUE 1
     MAXVALUE 2147483647
-    CACHE 1;
-
-
-    OWNED BY claims.id;
+    CACHE 1
+    OWNED BY claims.claims.id;
 
 -- Table: claims.claims
 
