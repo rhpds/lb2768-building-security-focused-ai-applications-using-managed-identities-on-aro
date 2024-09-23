@@ -26,6 +26,15 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 # Load local env vars if present
 load_dotenv()
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler("app.log", mode='a', encoding='utf-8')
+    ]
+)
+
 # Initialize logger
 logger = logging.getLogger("app")
 
