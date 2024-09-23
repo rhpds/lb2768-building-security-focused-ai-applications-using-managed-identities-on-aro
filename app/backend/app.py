@@ -68,12 +68,14 @@ def get_storage_client():
             aws_secret_access_key=config["AWS_SECRET_ACCESS_KEY"],
             use_ssl=config["S3_ENDPOINT_URL"].startswith("https"),
         )
+        logger.info(f"Connected to S3: {config['S3_ENDPOINT_URL']}")
         return s3
     elif storage_service == "azure":
         blob_service_client = BlobServiceClient(
             account_url=config["AZURE_BLOB_ACCOUNT_URL"],
             credential=config["AZURE_BLOB_CREDENTIAL"]
         )
+        logger.info(f"Connected to Azure Blob Storage: {config['AZURE_BLOB_ACCOUNT_URL']}")
         return blob_service_client
     else:
         raise ValueError("Unsupported storage service specified")
