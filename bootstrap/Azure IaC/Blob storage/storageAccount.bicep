@@ -17,4 +17,4 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 
 output storageAccountId string = storageAccount.id
 output storageAccountName string = storageAccount.name
-output storageAccountPrimaryLocation string = storageAccount.primaryLocation
+output storageAccountPrimaryLocation string = storageAccount.location
