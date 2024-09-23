@@ -1,13 +1,13 @@
 #!/bin/bash
 #
-# "Standard" ARO cluster deployment with public API and public ingress
+# "Standard" ARO cluster deployment with public API and public ingress to run the workshop
 #
 # Get the pull secret from https://cloud.redhat.com/openshift/install/azure/aro-provisioned
 #
 # Set environment variables
 #
-# Name of Azure Key Vault instance to use
-# Script will retrieve the jumpbox VM admin credentials from the Key Vault
+# Name of Azure Key Vault instance to use (create before or use: pullSecret=$(cat /Users/mark/Downloads/pull-secret.txt) )
+
 keyVaultName=msazuredev
 keyVaultResourceGroup=shared
 
@@ -38,7 +38,11 @@ objectId=$(az ad sp list --display-name ${name}-spn --query '[].id' -o tsv 2>/de
 
 rpObjectId=$(az ad sp list --filter "displayname eq 'Azure Red Hat OpenShift RP'" --query '[0].id' -o tsv 2>/dev/null)
 
+#create the resource group with location
+
 az group create -n $name -l $location -o table
+
+# runs the bicep deployment
 
 az deployment group create \
     -n $name-$RANDOM \
