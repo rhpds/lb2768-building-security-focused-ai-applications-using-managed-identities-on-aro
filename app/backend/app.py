@@ -81,7 +81,9 @@ def get_storage_client():
         raise ValueError("Unsupported storage service specified")
 
 # Initialize Storage Client
-storage_client = get_storage_client()
+#storage_client = get_storage_client()
+s3 = get_storage_client()
+
 
 # Initialize Chatbot
 chatbot = chatbot.Chatbot(config, logger)
