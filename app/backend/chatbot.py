@@ -150,8 +150,15 @@ class Chatbot:
             azure_ai_search_api_key = os.getenv("AZURE_AI_SEARCH_API_KEY")
 
             llm = AzureChatOpenAI(
-                azure_deployment = os.getenv("AZURE_DEPLOYMENT")
-            )
+                azure_deployment = os.getenv("AZURE_DEPLOYMENT"),
+                max_tokens=int(self.config["MAX_TOKENS"]),
+                top_p=float(self.config["TOP_P"]),
+                temperature=float(self.config["TEMPERATURE"]),
+                presence_penalty=float(self.config["PRESENCE_PENALTY"]),
+                streaming=True,
+                verbose=False,
+                callbacks=[QueueCallback(q, self.logger)]
+           )
 
             embeddings = AzureOpenAIEmbeddings(
                 azure_deployment = os.getenv("AZURE_EMBEDDING")
