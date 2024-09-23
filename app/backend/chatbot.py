@@ -180,6 +180,10 @@ class Chatbot:
         # Create a function to call - this will run in a thread
         def task():
             resp = rag_chain.invoke({"query": query, "claim": claim})
+            logger.info(f"Query: {query}")
+            logger.info(f"Claim: {claim}")
+            logger.info(f"Response: {resp}")
+            logger.info(f"Sources: {resp['source_documents']}")
             sources = self.format_sources(resp['source_documents'])
             if len(sources) != 0:
                 data = {"type": "source", "source": sources}
