@@ -29,6 +29,8 @@ load_dotenv()
 # Initialize logger
 logger = logging.getLogger("app")
 
+logger.info("Starting Azure version of app")
+
 # Get config
 config = {
     **dotenv_values(".env"),  # load shared development variables
@@ -228,7 +230,7 @@ class SPAStaticFiles(StaticFiles):
         if len(sys.argv) > 1 and sys.argv[1] == "dev":
             # We are in Dev mode, proxy to the React dev server
             async with httpx.AsyncClient() as client:
-                response = await client.get(f"http://localhost:5000/{path}")
+                response = await client.get(f"http://localhost:9000/{path}")
             return Response(response.text, status_code=response.status_code)
         else:
             try:
