@@ -1,4 +1,32 @@
 #!/bin/bash
+
+# create fake showroom users
+
+for i in $(seq 1 25);
+do
+    htpasswd -c -B -b users.htpasswd $i openshift
+    oc create namespace showroom-user$i
+done
+
+oc create secret generic htpass-secret --from-file=htpasswd=users.htpasswd -n openshift-config
+
+
+cat << EOF | oc apply -f -
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  name: cluster
+spec:
+  identityProviders:
+  - name: my_htpasswd_provider
+    mappingMethod: claim
+    type: HTPasswd
+    htpasswd:
+      fileData:
+        name: htpass-secret
+EOF
+
+
 # Get user count
 user_count=$(oc get namespaces | grep showroom | wc -l)
 
