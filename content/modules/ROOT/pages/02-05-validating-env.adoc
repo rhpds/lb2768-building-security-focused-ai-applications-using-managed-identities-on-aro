@@ -5,7 +5,15 @@ Now that you are connected to your workbench, let's make sure that all the expec
 
 In your workbench:
 
-. Download the file from this url: {azure_ai_info_url}
+. In Launcher click on Terminal:
++
+[.bordershadow]
+image::02/terminal.png[]
++
+.. Run the following command (but replace the url) `cd ; wget https://website.hosting/.env` to will download the credentials to connect to various Azure AI services.
++
+.. Close the terminal.
++
 
 . In the left hand navigation menu, navigate to the folder called: `parasol-insurance/lab-materials/02`
 
