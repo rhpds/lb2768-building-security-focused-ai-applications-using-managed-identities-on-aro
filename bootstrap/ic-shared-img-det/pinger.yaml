@@ -3,6 +3,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: model-pinger
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   labels:
     app: model-pinger
 spec:
@@ -54,6 +56,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: model-pinger
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 data:
   ping_model.py: |
     import os

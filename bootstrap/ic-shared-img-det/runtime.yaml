@@ -87,6 +87,7 @@ metadata:
     opendatahub.io/template-display-name: OpenVINO Model Server
     opendatahub.io/template-name: ovms
     openshift.io/display-name: ovms
+    argocd.argoproj.io/sync-wave: "3"
   name: ovms
   namespace: ic-shared-img-det
   labels:
