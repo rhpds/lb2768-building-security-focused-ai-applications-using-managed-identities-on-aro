@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# create fake showroom users
+user_count=$(oc get namespaces | grep showroom | wc -l)
 
+# create fake showroom users
+if [[ $user_count == "0" ]]; then
 for i in $(seq 1 25);
 do
     htpasswd -c -B -b users.htpasswd $i openshift
@@ -25,7 +27,7 @@ spec:
       fileData:
         name: htpass-secret
 EOF
-
+fi
 
 # Get user count
 user_count=$(oc get namespaces | grep showroom | wc -l)
