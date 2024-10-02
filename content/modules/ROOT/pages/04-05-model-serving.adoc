@@ -87,12 +87,6 @@ OpenVINO Model Server
 [source, text]
 [subs=attributes+]
 Standard
-** Accelerator
-[.lines_space]
-[.console-input]
-[source, text]
-[subs=attributes+]
-None
 ** Model route
 [.lines_space]
 [.console-input]
