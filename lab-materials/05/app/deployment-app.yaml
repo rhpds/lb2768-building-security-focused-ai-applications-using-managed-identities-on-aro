@@ -29,7 +29,6 @@ spec:
               name: dot-env
               readOnly: true
           image: ghcr.io/paulczar/parasol-insurance/parasol-app:latest
-          imagePullPolicy: Always
           ports:
             - containerPort: 5000
               protocol: TCP
