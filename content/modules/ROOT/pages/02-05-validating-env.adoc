@@ -17,7 +17,6 @@ image::02/terminal.png[]
 [source, text]
 cd
 wget https://website.hosting/.env
-oc create secret generic dot-env --from-file /opt/app-root/src/.env
 
 +
 
