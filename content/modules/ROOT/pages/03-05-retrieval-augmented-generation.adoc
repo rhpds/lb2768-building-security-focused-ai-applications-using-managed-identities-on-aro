@@ -9,7 +9,7 @@ There are different ways to solve this problem, depending on the resources you h
 - Fine-tune the model with this new information. This requires way less resources, and can usually be done in a few hours or minutes (depending on the size of the model). However as it does not fully retrain the model, the new information may not be completely integrated in the answers. Fine-tuning excels at giving a better understanding of a specific context or vocabulary, a little bit less on injecting new knowledge. Plus you have to retrain and redeploy the model anyway any time you want to add more information.
 - Put this new information in a database and have the parts relevant to the query retrieved and added to this query as a context before sending it to the LLM. This technique is called **Retrieval Augmented Generation, or RAG**. It is interesting as you don't have to retrain or fine-tune the model to benefit of this new knowledge, that you can easily update at any time.
 
-We have already prepared a Vector Database using https://milvus.io/[Milvus,window=_blank], where we have stored (in the form of https://www.ibm.com/topics/embedding[Embeddings,window=_blank]) the content of the https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/[California Driver's Handbook,window=_blank].
+We have already prepared a Vector Database using https://azure.microsoft.com/en-us/products/ai-services/ai-search/[Azure AI Search,window=_blank], where we have stored the content of the https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/[California Driver's Handbook,window=_blank].
 
 In this exercise, we are going to use the RAG technique to **make some queries about a Claim** and see how this new knowledge can help without having to modify our LLM.
 

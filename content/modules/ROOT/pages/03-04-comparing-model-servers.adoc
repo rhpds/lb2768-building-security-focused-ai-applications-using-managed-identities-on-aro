@@ -1,7 +1,7 @@
 = Comparing two LLMs
 include::_attributes.adoc[]
 
-So far, for this {ic-lab}, we have used the model https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2[Mistral-7B Instruct v2,window=_blank]. Although lighter than other models, it is still quite heavy and we need a large GPU to run it. Would we get as good results with a smaller model running on a CPU only? Let's try!
+So far, for this {ic-lab}, we have used the model https://azure.microsoft.com/en-us/blog/introducing-gpt4-in-azure-openai-service/[Azure OpenAI GPT-4,window=_blank]. It's easy to use and available to us as an API, but what if we try a smaller model running on only CPUs? Would that work? Let's try!
 
 In this exercise, we'll pitch our previous model against a much smaller LLM called https://huggingface.co/google/flan-t5-small[flan-t5-large,window=_blank]. We'll compare the results and see if the smaller model is good enough for our use case.
 
