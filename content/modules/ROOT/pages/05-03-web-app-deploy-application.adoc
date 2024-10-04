@@ -1,6 +1,15 @@
 = Deploying the application via GitOps
 include::_attributes.adoc[]
 
+- Create a secret containing the .env file
+
++
+[.lines_space]
+[.console-input]
+[source, text]
+curl https://path.to/.env
+oc create secret generic dot-env --from-file .env
+
 - Let's find the Route of the {argocd} instance by running the following command in the Terminal:
 +
 [.lines_space]
@@ -14,11 +23,10 @@ echo "   {argocd} UI : https://$(oc get route argocd-server -ojsonpath='{.status
 image::05/argocd-route.png[]
 
 - You can now connect to the ArgoCD UI using your given credentials ({user}/{password}).
-====
 
 == Deploy the application(s) via GitOps
 
-Now that {argocd} is deployed in your namespace, we can use it to deploy the application via GitOps.
+There is an instance of ArgoCD in your namespace, we can use it to deploy the application via GitOps.
 
 - Copy the content of the following text, and paste it in the {ocp-short} Terminal to deploy the application.
 +
