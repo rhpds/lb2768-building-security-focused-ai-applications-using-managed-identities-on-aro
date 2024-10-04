@@ -17,7 +17,7 @@ image::04/roboflow-test-images.png[roboflow images]
 3. Each image has an annotation text file in the 'labels' subfolder. The annotation text files have the same names as the image files.
 ====
 
-== (Optional) Detailed code and execution
+== Detailed code and execution
 
 If you want to dig deeper into this section, follow the instructions below. If you are pressed for time, you can skip to the next section.
 

@@ -23,7 +23,7 @@ Therefore we need to write some code that will draw boxes around the cars identi
 [.bordershadow]
 image::04/box-identified-cars.png[identify cars]
 
-== (Optional) Detailed code and execution
+== Detailed code and execution
 
 If you want to dig deeper into this section, follow the instructions below. If you are pressed for time, you can skip to the next section.
 
