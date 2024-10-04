@@ -41,7 +41,7 @@ If you got this far and saw all that, congratulations, you properly connected to
 
 We are now ready to start the {ic}.
 
-== Getting Support during Red Hat Summit
+== Getting Support during the workshop
 
 * In the room:
 ** Some very kind colleagues of ours will be walking around in the room, to help and/or answer questions.
