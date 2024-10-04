@@ -14,8 +14,9 @@ The different components are:
 - The **frontend**: the application itself, developed using the Patternfly framework (React, Typescript), running in the browser of the user.
 - The **backend**: a Python FastAPI application, running in a container on {ocp}. It handles the communication with the database, the LLM, and the Object storage. It handles the communication with the frontend by exposing a REST API.
 - The **database**: a PostgreSQL database, running in a container on {ocp}. It stores the claims.
-- The **LLM**: the language model used to summarize and extract information from the claims. It is consumed by the backend through its API.
-- The **VectorDB**: the vector database used to store documents for retrieval in the RAG part. It's based on Milvus.
+- The **LLM**: the language model used to summarize and extract information from the claims. We are using https://azure.microsoft.com/en-us/blog/introducing-gpt4-in-azure-openai-service/[Azure OpenAI GPT-4,window=_blank] and consume it using the API.
+- The **VectorDB**: the vector database used to store documents for retrieval in the RAG part. We have already prepared a Vector Database using https://azure.microsoft.com/en-us/products/ai-services/ai-search/[Azure AI Search,window=_blank], where we have stored the content of the https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/[California Driver's Handbook,window=_blank].
+
 - The **Object storage**: an S3-compatible object storage. It stores the claim images.
 
 == Application Code

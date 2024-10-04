@@ -12,7 +12,7 @@ Using the re-trained model, we will see that we are able to identify a severe ca
 [.bordershadow]
 image::04/retrained-model-results.png[retrained modelresults]
 
-== (Optional) Detailed code and execution
+== Detailed code and execution
 
 If you want to dig deeper into this section, follow the instructions below. If you are pressed for time, you can skip to the next section.
 
