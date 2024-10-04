@@ -10,10 +10,17 @@ In your workbench:
 [.bordershadow]
 image::02/terminal.png[]
 +
-.. Run the following command (but replace the url) `cd ; wget https://website.hosting/.env` to will download the credentials to connect to various Azure AI services.
+.. Run the following command (but replace the url)  to download the credentials to connect to various Azure AI services.
+
+[.lines_space]
+[.console-input]
+[source, text]
+cd
+wget https://website.hosting/.env
+
 +
+
 .. Close the terminal.
-+
 
 . In the left hand navigation menu, navigate to the folder called: `parasol-insurance/lab-materials/02`
 

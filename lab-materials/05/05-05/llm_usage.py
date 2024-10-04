@@ -25,13 +25,13 @@ def infer_with_template(input_text, template):
         streaming=False,
         verbose=False,
     )
-    
+
     PROMPT = PromptTemplate.from_template(template)
-    
+
     llm_chain = LLMChain(llm=llm, prompt=PROMPT)
-    
+
     return llm_chain.run(input_text)
-    
+
 def similarity_metric(predicted_text, reference_text):
     embedding_model = HuggingFaceEmbeddings()
     evaluator = load_evaluator("embedding_distance", embeddings=embedding_model)
