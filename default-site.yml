@@ -19,3 +19,8 @@ output:
 
 runtime:
   cache_dir: ./content/.cache/antora
+
+extensions:
+  - id: dev-mode
+    require: ./content/lib/dev-mode.js
+    enabled: false
