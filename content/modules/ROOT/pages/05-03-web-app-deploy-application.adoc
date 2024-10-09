@@ -7,7 +7,7 @@ include::_attributes.adoc[]
 [.lines_space]
 [.console-input]
 [source, text]
-curl -O https://path.to/.env
+curl -O {azure_ai_info_url}
 oc create secret generic dot-env --from-file .env
 
 - Let's find the Route of the {argocd} instance by running the following command in the Terminal:
