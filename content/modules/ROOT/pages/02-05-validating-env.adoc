@@ -14,7 +14,7 @@ image::02/terminal.png[]
 
 [.lines_space]
 [.console-input]
-[source, text]
+[,bash,subs="attributes"]
 cd
 wget {azure_ai_info_url}
 

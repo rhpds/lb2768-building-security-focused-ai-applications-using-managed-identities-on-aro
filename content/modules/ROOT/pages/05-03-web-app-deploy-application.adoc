@@ -6,7 +6,7 @@ include::_attributes.adoc[]
 +
 [.lines_space]
 [.console-input]
-[source, text]
+[,bash,subs="attributes"]
 curl -O {azure_ai_info_url}
 oc create secret generic dot-env --from-file .env
 
@@ -14,7 +14,7 @@ oc create secret generic dot-env --from-file .env
 +
 [.lines_space]
 [.console-input]
-[source, text]
+[,bash,subs="attributes"]
 echo "   {argocd} UI : https://$(oc get route argocd-server -ojsonpath='{.status.ingress[0].host}')/ "
 
 - You should obtain something like this:
