@@ -12,13 +12,12 @@ image::02/terminal.png[]
 +
 .. Run the following command to download the credentials to connect to various Azure AI services.
 
++
 [.lines_space]
 [.console-input]
 [,bash,subs="attributes"]
 cd
 wget {azure_ai_info_url}
-
-+
 
 .. Close the terminal.
 
