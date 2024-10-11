@@ -3,9 +3,9 @@ include::_attributes.adoc[]
 
 Now that you are connected to your workbench, let's make sure that all the expected services are responding properly in the cluster.
 
-In your workbench:
+When you open your workbench you will see your "Launcher" tab:
 
-. In Launcher click on Terminal:
+. At the bottom of the page under "Other", click on "Terminal":
 +
 [.bordershadow]
 image::02/terminal.png[]
