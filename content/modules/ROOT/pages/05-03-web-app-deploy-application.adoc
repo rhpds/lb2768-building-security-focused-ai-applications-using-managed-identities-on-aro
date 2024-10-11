@@ -59,7 +59,7 @@ EOF
 [.bordershadow]
 image::05/05-switch-to-admin-view.jpg[]
 
-- Make sure you have your project select: {user}
+- Make sure you have your project selected: `{user}`
 - Wait for the application to be fully deployed and initialized. It will be the case when the two Jobs `db-init-job` and `populate-images` are completed (Completions: 1 of 1).
 
 [.bordershadow]
