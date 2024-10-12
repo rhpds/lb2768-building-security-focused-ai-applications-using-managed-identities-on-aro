@@ -1,12 +1,7 @@
-= Thank you for your participation
+= Well done!
 include::_attributes.adoc[]
 
-We hope that the materials we used during this time together were useful and gave you a better appreciation and understanding of what goes into an intelligent application.
+You made it all the way to the end. We hope that the materials we used during this time together were useful and gave you a better appreciation and understanding of what goes into building AI apps!
 
-If you notice https://github.com/rh-aiservices-bu/parasol-insurance/issues[issues,window=_blank] with the content and/or want to send us a https://github.com/rh-aiservices-bu/parasol-insurance/pulls[pull request,window=_blank], we'll appreciate it very much.
+Now is a good time to reflect on what we have just done and think to yourself of potential usecases in your organization where you could use these same techniques to improve your business. Any ideas spring to mind? Feel free to discuss with instructors in the room if you idea is possible. 
 
-The instructions of this {ic} are always available at https://rh-aiservices-bu.github.io/parasol-insurance/[https://rh-aiservices-bu.github.io/parasol-insurance/,window=_blank]. Make note of this URL as it will be updated with new content as we continue to improve the {ic-lab}.
-
-== Acknowledgements
-
-Thanks to everyone who helped create this {ic}, https://github.com/rh-aiservices-bu/parasol-insurance/graphs/contributors[contributors,window=_blank] and reviewers!
