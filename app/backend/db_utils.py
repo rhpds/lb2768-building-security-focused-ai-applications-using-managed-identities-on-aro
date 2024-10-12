@@ -19,9 +19,13 @@ class Database:
                 conn (psycopg2.extensions.connection): A connection object representing the database connection.
             """
             self.logger.info(f"Connecting to PostgreSQL Database...")
+            postgresHost = config["POSTGRES_HOST"]
+            if config["AZURE_POSTGRES_HOST"] in config:
+                postgresHost = config["AZURE_POSTGRES_HOST"]
+
             try:
                 conn = psycopg2.connect(
-                        host = config["POSTGRES_HOST"],
+                        host = postgresHost,
                         dbname = config["POSTGRES_DB"],
                         user = config["POSTGRES_USER"],
                         password = config["POSTGRES_PASSWORD"],

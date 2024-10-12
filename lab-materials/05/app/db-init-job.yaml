@@ -43,14 +43,26 @@ spec:
                 key: database-password
           - name: POSTGRESQL_DATABASE_HOST
             value: claimdb.$(NAMESPACE).svc.cluster.local
+        volumeMounts:
+          - mountPath: /opt/app-root/src/.env
+            subPath: .env
+            name: dot-env
+            readOnly: true
         command: ["/bin/bash", "-c"]
         args:
         - |
           echo "Running SQL script"
-          psql -h $POSTGRESQL_DATABASE_HOST -p 5432 -U $POSTGRESQL_USER -d $POSTGRESQL_DATABASE -f /sql-script/script.sql
+          if [ "${AZURE_POSTGRES_HOST}" != "" ] ; then
+            psql -h $AZURE_POSTGRES_HOST -p 5432 -U $POSTGRESQL_USER -d $POSTGRESQL_DATABASE -f /sql-script/script.sql
+          else
+            psql -h $POSTGRESQL_DATABASE_HOST -p 5432 -U $POSTGRESQL_USER -d $POSTGRESQL_DATABASE -f /sql-script/script.sql
+          fi
         volumeMounts:
         - name: sql-script-volume
           mountPath: /sql-script
+        - name: dot-env
+          secret:
+            secretName: dot-env
       restartPolicy: Never
       volumes:
       - name: sql-script-volume

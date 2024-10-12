@@ -20,8 +20,12 @@ class Database:
             """
             self.logger.info(f"Connecting to PostgreSQL Database...")
             # try:
+            postgresHost = config["POSTGRES_HOST"]
+            if config["AZURE_POSTGRES_HOST"] in config:
+                postgresHost = config["AZURE_POSTGRES_HOST"]
+
             conn = psycopg2.connect(
-                    host = config["POSTGRES_HOST"],
+                    host = postgresHost,
                     dbname = config["POSTGRES_DB"],
                     user = config["POSTGRES_USER"],
                     password = config["POSTGRES_PASSWORD"],
