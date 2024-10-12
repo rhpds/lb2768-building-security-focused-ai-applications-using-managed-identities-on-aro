@@ -1,7 +1,7 @@
 = Getting connected
 include::_attributes.adoc[]
 
-For the purposes of this training session, we have provisioned a single {ocp} cluster, with {rhoai} deployed on it.
+For the purposes of this training session, we have provisioned a single {ocp} cluster, with {rhoai} deployed on it. In addition we have set up Azure OpenAI GPT-4 and Azure AI Search that we will connect to via their respective APIs. 
 
 Each person attending this lab will have a unique user account in which to do their work.
 

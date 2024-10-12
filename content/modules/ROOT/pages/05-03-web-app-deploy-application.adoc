@@ -2,11 +2,10 @@
 include::_attributes.adoc[]
 
 - Create a secret containing the .env file
-
 +
 [.lines_space]
 [.console-input]
-[,bash,subs="attributes"]
+[source, bash, subs="attributes+"]
 curl -O {azure_ai_info_url}
 oc create secret generic dot-env --from-file .env
 
@@ -14,7 +13,7 @@ oc create secret generic dot-env --from-file .env
 +
 [.lines_space]
 [.console-input]
-[,bash,subs="attributes"]
+[source, bash, subs="attributes+"]
 echo "   {argocd} UI : https://$(oc get route argocd-server -ojsonpath='{.status.ingress[0].host}')/ "
 
 - You should obtain something like this:
@@ -22,7 +21,7 @@ echo "   {argocd} UI : https://$(oc get route argocd-server -ojsonpath='{.status
 [.bordershadow]
 image::05/argocd-route.png[]
 
-- You can now connect to the ArgoCD UI using your given credentials ({user}/{password}).
+- You can now connect to the ArgoCD UI using your given credentials (`{user}` / `{password}`).
 
 == Deploy the application(s) via GitOps
 
@@ -60,7 +59,7 @@ EOF
 [.bordershadow]
 image::05/05-switch-to-admin-view.jpg[]
 
-- Make sure you have your project select: {user}
+- Make sure you have your project selected: `{user}`
 - Wait for the application to be fully deployed and initialized. It will be the case when the two Jobs `db-init-job` and `populate-images` are completed (Completions: 1 of 1).
 
 [.bordershadow]

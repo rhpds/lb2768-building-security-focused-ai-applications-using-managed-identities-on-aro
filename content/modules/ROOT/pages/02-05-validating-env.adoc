@@ -3,22 +3,20 @@ include::_attributes.adoc[]
 
 Now that you are connected to your workbench, let's make sure that all the expected services are responding properly in the cluster.
 
-In your workbench:
+When you open your workbench you will see your "Launcher" tab:
 
-. In Launcher click on Terminal:
+. At the bottom of the page under "Other", click on "Terminal":
 +
 [.bordershadow]
 image::02/terminal.png[]
 +
 .. Run the following command to download the credentials to connect to various Azure AI services.
-
++
 [.lines_space]
 [.console-input]
-[,bash,subs="attributes"]
+[source, bash, subs="attributes+"]
 cd
 wget {azure_ai_info_url}
-
-+
 
 .. Close the terminal.
 
@@ -58,4 +56,4 @@ If the output of this notebook looks suspicious, please inform the people leadin
 This is a summarized visualization of how the environment is laid out:
 
 [.bordershadow]
-image::02/ic-eng-diag.drawio.svg[]
+image::02/ic-eng-diag.drawio.png[]
