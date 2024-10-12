@@ -20,7 +20,7 @@ class Database:
             """
             self.logger.info(f"Connecting to PostgreSQL Database...")
             postgresHost = config["POSTGRES_HOST"]
-            if config["AZURE_POSTGRES_HOST"] in config:
+            if "AZURE_POSTGRES_HOST" in config:
                 postgresHost = config["AZURE_POSTGRES_HOST"]
 
             try:
