@@ -145,11 +145,12 @@ On top of that, Azure offers an array of fully managed AI services like Azure Op
 
 For Parasol's solution, we’ve chosen the following combination of services:
 
-Azure Red Hat OpenShift (ARO): The foundation for hosting both frontend and backend services.
-OpenShift AI: Providing the AI capabilities on top of ARO.
-Azure OpenAI GPT-4o: Powering the natural language interface for efficient interaction.
-Azure AI Search: Serving as a highly capable vector database, with added features beyond just vector storage.
-Azure Managed PostgreSQL: Supporting our backend database needs, specifically for handling claims.
+- Azure Red Hat OpenShift (ARO): The foundation for hosting both frontend and backend services.
+- OpenShift AI: Providing the AI capabilities on top of ARO.
+- Azure OpenAI GPT-4o: Powering the natural language interface for efficient interaction.
+- Azure AI Search: Serving as a highly capable vector database, with added features beyond just vector storage
+- Azure Managed PostgreSQL: Supporting our backend database needs, specifically for handling claims.
+
 In this architecture, the frontend and backend services are running on ARO, with OpenShift AI fully integrated. We leverage Azure OpenAI GPT-4o for a natural language processing interface, making it easier for users to interact with the system. For data storage and management, we rely on Azure Managed PostgreSQL for the claims database, while Azure AI Search serves as our vector database, offering enhanced features to improve data retrieval and search functionalities.
 
-By combining these technologies, we create a streamlined, highly efficient solution that allows businesses to focus on innovation and driving real results without the complexity of managing AI infrastructure.
+By combining these technologies, we create a streamlined, highly efficient solution that allows businesses to focus on innovation and driving real results without the complexity of managing AI platforms.
