@@ -1,4 +1,19 @@
-# OpenShift AI Unleashed: Transforming Claims Processing for Maximum Efficiency!
+# OpenShift AI + Azure AI Workshop = End-2-End for all your AI needs!
+Join us for an exciting workshop where we explore the powerful combination of OpenShift AI and Azure AI—showing how they truly are better together! This hands-on session is designed specifically to work off an use-case (insurance), providing participants with guided labs and practical exercises to help uncover and implement AI-driven solutions.
+
+
+# Transforming Claims Processing for Maximum Efficiency!
+Get ready to dive into the future of insurance with Parasol, an innovative company using AI to supercharge the efficiency of claim processing! We're harnessing cutting-edge models and technologies to revolutionize how things are done.
+
+In this workshop, you'll see firsthand how Natural Language Processing (NLP) and Large Language Models (LLMs) are transforming the user experience. But we’re not stopping there! Fine-tuning and comparing models? We’ve got that covered, too.
+
+Throughout this hands-on exercise, you’ll explore how AI can simplify your workflows. From consulting models for information to performing image recognition and comparing model outputs, you'll experience the incredible capabilities AI has to offer.
+
+And the best part? While we’re working with a predefined insurance use case, we’re confident the knowledge and skills you gain will be invaluable for your own AI projects.
+
+Ready to collaborate with Red Hat and Microsoft on your use case? We’re here to support you every step of the way—reach out, and let’s make it happen!
+# OpenShift AI + Azure AI Architecture
+
 
 ## Introduction
 
