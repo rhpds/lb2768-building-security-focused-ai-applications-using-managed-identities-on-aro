@@ -14,6 +14,24 @@ And the best part? While we’re working with a predefined insurance use case, w
 
 Ready to collaborate with Red Hat and Microsoft on your use case? We’re here to support you every step of the way—reach out, and let’s make it happen!
 # OpenShift AI + Azure AI Architecture
+Let’s begin with an in-depth look at the architecture of our solution.
+
+The entire platform is hosted on Azure, where we harness the combined power of OpenShift AI running on Azure Red Hat OpenShift along with a suite of Azure AI services. This powerful combination enables us to create an advanced, scalable solution designed to meet all of your AI needs.
+
+Azure Red Hat OpenShift (ARO) is an exceptional, fully managed application platform that has been co-engineered and is jointly supported by both Microsoft and Red Hat. It provides the perfect foundation for running enterprise-grade applications. When you integrate OpenShift AI on top of ARO, you can build, train, and deploy AI models seamlessly within a robust, cloud-native environment.
+
+On top of that, Azure offers an array of fully managed AI services like Azure OpenAI, Azure AI Search, and many others. These services allow you to focus on driving business value instead of worrying about the complexities of implementing and maintaining infrastructure. With Azure's managed offerings, you're able to accelerate innovation without the overhead of managing an entire AI platform.
+
+For Parasol's solution, we’ve chosen the following combination of services:
+
+Azure Red Hat OpenShift (ARO): The foundation for hosting both frontend and backend services.
+OpenShift AI: Providing the AI capabilities on top of ARO.
+Azure OpenAI GPT-4o: Powering the natural language interface for efficient interaction.
+Azure AI Search: Serving as a highly capable vector database, with added features beyond just vector storage.
+Azure Managed PostgreSQL: Supporting our backend database needs, specifically for handling claims.
+In this architecture, the frontend and backend services are running on ARO, with OpenShift AI fully integrated. We leverage Azure OpenAI GPT-4o for a natural language processing interface, making it easier for users to interact with the system. For data storage and management, we rely on Azure Managed PostgreSQL for the claims database, while Azure AI Search serves as our vector database, offering enhanced features to improve data retrieval and search functionalities.
+
+By combining these technologies, we create a streamlined, highly efficient solution that allows businesses to focus on innovation and driving real results without the complexity of managing AI infrastructure.
 
 
 ## Introduction
