@@ -5,7 +5,7 @@ include::_attributes.adoc[]
 
 Now that we have retrained our model we can test it against some sample images.
 
-We have converted our model to onnx format and placed a copy within an S3 bucket. We will test this version against some sample test images.
+We have converted our model to onnx format and placed a copy within a cloud storage bucket. We will test this version against some sample test images.
 
 Using the re-trained model, we will see that we are able to identify a severe car crash with 91% certainty, like in the below picture:
 
