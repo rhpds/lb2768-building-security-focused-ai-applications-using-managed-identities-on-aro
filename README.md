@@ -1,4 +1,5 @@
-# OpenShift AI + Azure AI Workshop = End-2-End for all your AI needs!
+# OpenShift AI + Azure AI Workshop
+# An end-2-end solution for all your AI needs!
 Join us for an exciting workshop where we explore the powerful combination of OpenShift AI and Azure AI—showing how they truly are better together! This hands-on session is designed specifically to work off an use-case (insurance), providing participants with guided labs and practical exercises to help uncover and implement AI-driven solutions.
 
 
@@ -17,7 +18,7 @@ Ready to collaborate with Red Hat and Microsoft on your use case? We’re here t
 
 ## Introduction
 
-This repository contains the code, instructions, resources and materials associated with the Lab called **OpenShift AI Unleashed: Transforming Claims Processing for Maximum Efficiency!**.
+This repository contains the code, instructions, resources and materials associated with the Lab called **OpenShift AI + Azure AI Workshop**.
 
 To consult the static version of the instructions, please use [this URL](https://rh-aiservices-bu.github.io/parasol-insurance/)
 
