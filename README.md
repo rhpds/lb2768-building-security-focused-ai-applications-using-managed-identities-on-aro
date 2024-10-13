@@ -1,5 +1,4 @@
-# OpenShift AI + Azure AI Workshop
-# An end-2-end solution for all your AI needs!
+# OpenShift AI + Azure AI Workshop = Better together... An end-2-end solution for all your AI needs!
 Join us for an exciting workshop where we explore the powerful combination of OpenShift AI and Azure AI—showing how they truly are better together! This hands-on session is designed specifically to work off an use-case (insurance), providing participants with guided labs and practical exercises to help uncover and implement AI-driven solutions.
 
 
