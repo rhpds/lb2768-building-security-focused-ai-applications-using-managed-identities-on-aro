@@ -6,6 +6,8 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
 data:
   script.sql: |  
+    BEGIN TRANSACTION;
+
     CREATE SCHEMA IF NOT EXISTS claims
     AUTHORIZATION claimdb;
 
@@ -333,5 +335,7 @@ data:
     INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('car3-processed.jpg', 'processed_images/car3-processed.jpg', 3);
     INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('car5-processed.jpg', 'processed_images/car5-processed.jpg', 3);
     INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('car6-processed.jpg', 'processed_images/car6-processed.jpg', 3);
+
+    COMMIT;
 
 

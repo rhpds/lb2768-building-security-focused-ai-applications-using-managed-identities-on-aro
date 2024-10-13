@@ -30,7 +30,7 @@ We have provided the following training data set, available as a zip file, and l
 == Interpreting the Model re-Training Results
 [%collapsible]
 ====
-The following training run shows the results for the full dataset.
+The following training run shows the results for the full dataset. In this example below GPUs was used for training, in our cluster today we did less epochs and we used only CPUs, but the concepts below still applies the same.
 
 Let's start by understanding what an 'epoch' is. Machine learning models are trained with specific datasets passed through the algorithm. Each time a dataset passes through an algorithm, it is said to have completed an epoch. Therefore, epoch, in machine learning, refers to the one entire passing of training data through the algorithm
 

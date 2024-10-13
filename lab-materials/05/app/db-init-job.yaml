@@ -47,13 +47,28 @@ spec:
         args:
         - |
           echo "Running SQL script"
-          psql -h $POSTGRESQL_DATABASE_HOST -p 5432 -U $POSTGRESQL_USER -d $POSTGRESQL_DATABASE -f /sql-script/script.sql
+
+          # Load config variables for Azure (we only use AZURE_POSTGRES_HOST)
+          source /opt/app-root/src/.env
+
+          if [ "${AZURE_POSTGRES_HOST}" != "" ] ; then
+            psql -h $AZURE_POSTGRES_HOST -p 5432 -U $POSTGRESQL_USER -d $POSTGRESQL_DATABASE -f /sql-script/script.sql
+          else
+            psql -h $POSTGRESQL_DATABASE_HOST -p 5432 -U $POSTGRESQL_USER -d $POSTGRESQL_DATABASE -f /sql-script/script.sql
+          fi
         volumeMounts:
         - name: sql-script-volume
           mountPath: /sql-script
+        - name: dot-env
+          mountPath: /opt/app-root/src/.env
+          subPath: .env
+          readOnly: true
       restartPolicy: Never
       volumes:
       - name: sql-script-volume
         configMap:
           name: sql-script-configmap
+      - name: dot-env
+        secret:
+          secretName: dot-env
   backoffLimit: 4

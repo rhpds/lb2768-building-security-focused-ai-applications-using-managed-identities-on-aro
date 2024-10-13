@@ -87,12 +87,12 @@ class Chatbot:
     def format_sources(self, input_list):
         sources = ""
         if len(input_list) != 0:
-            sources += input_list[0].metadata["title"] + ', page: ' + str(input_list[0].metadata["chunk_id"])
+            sources += input_list[0].metadata["title"] + ', page(s): ' + str(input_list[0].metadata["chunk_id"]).split("_")[-1]
             page_list = [input_list[0].metadata["chunk_id"]]
             for item in input_list:
                 if item.metadata["chunk_id"] not in page_list: # Avoid duplicates
                     page_list.append(item.metadata["chunk_id"])
-                    sources += ', ' + str(item.metadata["chunk_id"])
+                    sources += ', ' + str(item.metadata["chunk_id"]).split("_")[-1]
         return sources
 
     def stream(self, query, claim) -> Generator:

@@ -28,7 +28,7 @@ spec:
               subPath: .env
               name: dot-env
               readOnly: true
-          image: ghcr.io/paulczar/parasol-insurance/parasol-app:latest
+          image: ghcr.io/scorpiion/parasol-insurance/parasol-app:latest
           ports:
             - containerPort: 5000
               protocol: TCP
