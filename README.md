@@ -126,10 +126,10 @@ done
 </details>
 
 <details>
-  <summary>Links for Summit event environment assignment</summary>
+  <summary>Links for event environment assignment</summary>
 
-- URL for all labs: [https://one.demo.redhat.com/](https://one.demo.redhat.com/)
-- Search for `parasol`
+- URL for all labs: Provided during the day
+- Login and username: Provided during the day
 
 </details>
 
@@ -147,6 +147,7 @@ For Parasol's solution, we’ve chosen the following combination of services:
 
 - Azure Red Hat OpenShift (ARO): The foundation for hosting both frontend and backend services.
 - OpenShift AI: Providing the AI capabilities on top of ARO.
+- SLM Deployment on ARO to compare results with GPT4o
 - Azure OpenAI GPT-4o: Powering the natural language interface for efficient interaction.
 - Azure AI Search: Serving as a highly capable vector database, with added features beyond just vector storage
 - Azure Managed PostgreSQL: Supporting our backend database needs, specifically for handling claims.
