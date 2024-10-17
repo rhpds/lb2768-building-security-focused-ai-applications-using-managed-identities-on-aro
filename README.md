@@ -137,6 +137,8 @@ done
 # OpenShift AI + Azure AI Architecture
 Let’s begin with an in-depth look at the architecture of our solution.
 
+![Architecture Diagram](architecture-diagram.jpeg "Architecture Diagram")
+
 The entire platform is hosted on Azure, where we harness the combined power of OpenShift AI running on Azure Red Hat OpenShift along with a suite of Azure AI services. This powerful combination enables us to create an advanced, scalable solution designed to meet all of your AI needs.
 
 Azure Red Hat OpenShift (ARO) is an exceptional, fully managed application platform that has been co-engineered and is jointly supported by both Microsoft and Red Hat. It provides the perfect foundation for running enterprise-grade applications. When you integrate OpenShift AI on top of ARO, you can build, train, and deploy AI models seamlessly within a robust, cloud-native environment.
