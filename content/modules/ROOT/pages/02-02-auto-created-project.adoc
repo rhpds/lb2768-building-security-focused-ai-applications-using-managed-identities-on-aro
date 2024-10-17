@@ -8,6 +8,9 @@ In order to give you a feel for what "day 2" experience would be like, we have p
 == Open your project
 
 * Open the project called {user} by clicking on {user}
++
+[.bordershadow]
+image::02/02-02-click-on-user-x.png[]
 
 * Inside the project you should see a few items that already have been pre-created:
 +
