@@ -11,7 +11,7 @@ This is a web-based terminal that allows you to execute commands on the {ocp-sho
 [.bordershadow]
 image::05/01-openshift-console.png[]
 
-- When prompted, enter your credentials.
+- When prompted, enter your credentials (`{user}` / `{password}`).
 
 == Open a Web Terminal
 
