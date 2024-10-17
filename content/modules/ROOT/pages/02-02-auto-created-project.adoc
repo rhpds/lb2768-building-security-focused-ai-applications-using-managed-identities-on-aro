@@ -5,14 +5,9 @@ In order to give you a feel for what "day 2" experience would be like, we have p
 
 // If you want to learn more about the product and go deeper, the next ("DIY") section will walk you through the steps required to create all this from scratch instead.
 
-== Go to your project
+== Open your project
 
-* First, in the {rhoai} Dashboard application, navigate to the Data Science Projects menu on the left:
-+
-[.bordershadow]
-image::02/02-02-ds-proj-nav.png[]
-
-* Then, open the project called {user}.
+* Open the project called {user} by clicking on {user}
 
 * Inside the project you should see a few items that already have been pre-created:
 +
