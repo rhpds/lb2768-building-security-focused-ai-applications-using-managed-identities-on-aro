@@ -21,7 +21,7 @@ image::04/roboflow-test-images.png[roboflow images]
 
 If you want to dig deeper into this section, follow the instructions below. If you are pressed for time, you can skip to the next section.
 
-We have provided the following training data set, available as a zip file, and located in an S3 bucket: `accident-sample.zip` (as we don,t have time in this {ic-lab} to fully retrain the model, we will use a sample of the training data set).
+We have provided the following training data set, available as a zip file, and located in a cloud storage bucket: `accident-sample.zip` (as we don,t have time in this {ic-lab} to fully retrain the model, we will use a sample of the training data set).
 
 - In your running workbench, navigate to the folder `parasol-insurance/lab-materials/04`.
 - Look for (and open) the notebook called `04-03-model-retraining.ipynb`

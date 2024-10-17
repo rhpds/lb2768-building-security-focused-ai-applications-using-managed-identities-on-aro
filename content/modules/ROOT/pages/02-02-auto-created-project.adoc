@@ -17,5 +17,5 @@ image::02/02-02-pre-created-components.png[]
 * These components are as follows:
 1. A Workbench - this is your environment that you can experiment and train in.
 2. A Cluster storage - this is a persistent storage for your workbench.
-3. A Data Connection - it contains all the information needed to talk with an existing S3 storage, we use that to store models and pipeline artifacts.
+3. A Data Connection - it contains all the information needed to talk with an existing cloud storage bucket, we use that to store models and pipeline artifacts.
 4. A Pipeline Server - the pipeline server has already been set up here so you can import or run data science pipelines right away.
