@@ -1,7 +1,7 @@
 = Getting connected
 include::_attributes.adoc[]
 
-For the purposes of this training session, we have provisioned a single {ocp} cluster, with {rhoai} deployed on it. In addition we have set up Azure OpenAI GPT-4 and Azure AI Search that we will connect to via their respective APIs. 
+For the purposes of this training session, we have provisioned a single {ocp} cluster, with {rhoai} deployed on it. In addition we have set up Azure AI Services OpenAI GPT-4 and Azure AI Search that we will connect to via their respective APIs. 
 
 Each person attending this lab will have a unique user account in which to do their work.
 
@@ -15,7 +15,7 @@ If you are using the customized version of the instructions, the information bel
 In a new window or tab, open the following URL and log in:
 
 * The {rhoai} Dashboard URL for our shared environment:
-** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
+** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/projects[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/projects,window=_blank]
 * Click on the `Login with OpenShift` button:
 +
 [.bordershadow]
@@ -35,7 +35,7 @@ image::02/02-01-login-scary.png[]
 * After you authenticate, the result should look like:
 +
 [.bordershadow]
-image::02/02-01-rhoai-front-page.png[]
+image::02/02-01-rhoai-projects-page.png[]
 
 If you got this far and saw all that, congratulations, you properly connected to the {rhoai} Dashboard Application!
 
