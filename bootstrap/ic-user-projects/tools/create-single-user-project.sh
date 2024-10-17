@@ -492,7 +492,7 @@ spec:
         args:
         - -ec
         - |-
-          pod_name=\$(oc get pods --selector=app=$WORKBENCH_NAME -o jsonpath='{.items[0].metadata.name}') && oc exec \$pod_name -- git clone https://github.com/paulczar/parasol-insurance
+          pod_name=\$(oc get pods --selector=app=$WORKBENCH_NAME -o jsonpath='{.items[0].metadata.name}') && oc exec \$pod_name -- git clone https://github.com/rh-mobb/parasol-insurance
       restartPolicy: Never
 EOF
 

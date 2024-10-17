@@ -24,7 +24,7 @@ spec:
         args:
         - -ec
         - |-
-          git clone https://github.com/paulczar/parasol-insurance.git
+          git clone https://github.com/rh-mobb/parasol-insurance.git
 
           cat << 'EOF' | python3
           import boto3, os, botocore

@@ -45,7 +45,7 @@ spec:
   project: default
   source:
     path: lab-materials/05/app
-    repoURL: https://github.com/paulczar/parasol-insurance.git
+    repoURL: https://github.com/rh-mobb/parasol-insurance.git
     targetRevision: dev
   syncPolicy:
     automated:
