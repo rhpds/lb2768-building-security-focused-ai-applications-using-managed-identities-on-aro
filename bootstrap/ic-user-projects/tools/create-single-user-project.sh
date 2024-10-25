@@ -267,8 +267,8 @@ metadata:
   annotations:
     openshift.io/description: ''
     openshift.io/display-name: My Workbench
-    volume.beta.kubernetes.io/storage-provisioner: openshift-storage.rbd.csi.ceph.com
-    volume.kubernetes.io/storage-provisioner: openshift-storage.rbd.csi.ceph.com
+    # volume.beta.kubernetes.io/storage-provisioner: openshift-storage.rbd.csi.ceph.com
+    # volume.kubernetes.io/storage-provisioner: openshift-storage.rbd.csi.ceph.com
   name: $WORKBENCH_NAME
   namespace: $USER_PROJECT
   finalizers:
@@ -281,7 +281,7 @@ spec:
   resources:
     requests:
       storage: 5Gi
-  storageClassName: ocs-storagecluster-ceph-rbd
+  storageClassName: azurefile-csi
   volumeMode: Filesystem
 EOF
 
