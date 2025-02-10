@@ -19,6 +19,29 @@ This {ic-lab} makes use of large language models (LLM) and image processing mode
 
 The quality of these models is enough for a prototype. Choosing the right model to use in a production environment is a complex task that requires a lot of experimentation and tuning. This {ic-lab} does not cover this aspect.
 
+
+== AI on Azure Red Hat OpenShift Workshop Transparency Guide
+
+*Overview*
+
+In the AI on Azure Red Hat OpenShift workshop, you will explore how a fictional insurance company, Parasol Insurance uses generative AI capabilities on Azure Red Hat OpenShift (ARO) to improve its claims processing. In this immersive experience, you will have the opportunity to deploy and work with different AI models while utilizing Red Hat OpenShift AI and Azure OpenAI.
+
+*Acceptable Use of Demo Environment*
+
+You are accessing Azure Red Hat OpenShift, Red Hat OpenShift AI and Azure OpenAI via the Red Hat Demo Platform that is operated by Red Hat. You are not using your own environment or applications during this demo.
+Access to this demo is restricted by invitation only.
+
+Only sample text will be used in the demo; you will not bring your own data. Do not enter personal or confidential information while using the demo.
+
+Usage metrics from the demo environment are tracked for reporting purposes.  Red Hat does not retain any customer entered data.
+
+Access to the lab will be turned off after the workshop is complete and the demo will be deleted.
+
+You can provide feedback about the demo environment functionality to your Red Hat Account Team who invited you to this session.
+
+You can provide feedback about the content of the demo to brjackso@redhat.com.
+
+
 == Timetable
 
 This is a tentative timetable for the materials that will be presented.
@@ -59,4 +82,3 @@ a|- What else could we add that would have value?
 - What else could we do following the same patterns?
 
 |=========================================================
-
