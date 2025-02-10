@@ -63,8 +63,8 @@ resource "azurerm_cognitive_account" "openai" {
   tags = var.tags
 }
 
-resource "azurerm_cognitive_deployment" "openai" {
-  name                 = "rhoai-${random_string.openai_suffix.result}"
+resource "azurerm_cognitive_deployment" "gpt35" {
+  name                 = "rhoai-gpt35${random_string.openai_suffix.result}"
   cognitive_account_id = azurerm_cognitive_account.openai.id
   version_upgrade_option = "OnceNewDefaultVersionAvailable"
   rai_policy_name = "Microsoft.Default"
@@ -77,6 +77,32 @@ resource "azurerm_cognitive_deployment" "openai" {
     format = "OpenAI"
     name = "gpt-35-turbo"
     version = "0301"
+  }
+}
+
+resource "azurerm_cognitive_account" "gpt4" {
+  name                = "rhoai-gpt4-${random_string.openai_suffix.result}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.openai.name
+  kind                = "OpenAI"
+  sku_name = "S0"
+  tags = var.tags
+}
+
+resource "azurerm_cognitive_deployment" "gpt4" {
+  name                 = "rhoai-gpt4-${random_string.openai_suffix.result}"
+  cognitive_account_id = azurerm_cognitive_account.gpt4.id
+  version_upgrade_option = "OnceNewDefaultVersionAvailable"
+  rai_policy_name = "Microsoft.Default"
+#   current_capacity = 10
+  sku {
+    name = "Standard"
+    capacity = 10
+  }
+  model {
+    format = "OpenAI"
+    name = "gpt-4"
+    version = "0613"
   }
 }
 
@@ -159,7 +185,8 @@ output "dotenv" {
   sensitive = true
   value = <<EOF
     PGSQL_URI=${azurerm_postgresql_server.openai.fqdn}
-    AZURE_OPENAI_ENDPOINT=https://${var.location}.api.cognitive.microsoft.com/
+    AZURE_OPENAI_ENDPOINT=https://canadaeast.api.cognitive.microsoft.com/
+    # AZURE_OPENAI_ENDPOINT=https://${var.location}.api.cognitive.microsoft.com/
     AZURE_OPENAI_API_KEY=${azurerm_cognitive_account.openai.primary_access_key}
     OPENAI_API_VERSION=2024-05-01-preview
     AZURE_DEPLOYMENT=${azurerm_cognitive_deployment.openai.name}
