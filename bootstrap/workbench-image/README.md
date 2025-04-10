@@ -15,3 +15,7 @@ The `requirements.txt` file used to build the container image is generated in th
 ## Build the image
 
 `podman build -t rhoai-lab-insurance-claim-workbench:x.y .`
+
+on a mac
+
+`podman build -t rhoai-lab-insurance-claim-workbench:x.y .`

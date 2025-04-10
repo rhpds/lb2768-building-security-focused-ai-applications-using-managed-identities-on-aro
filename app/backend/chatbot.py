@@ -24,6 +24,7 @@ from langchain_community.retrievers import AzureAISearchRetriever
 from azure.search.documents import SearchClient
 from azure.search.documents.models import VectorizedQuery
 from azure.core.credentials import AzureKeyCredential
+from azure.identity import DefaultAzureCredential
 
 
 class QueueCallback(BaseCallbackHandler):
@@ -65,7 +66,7 @@ class Chatbot:
                         Claim Summary:
                         {claim}
 
-                        References: 
+                        References:
                         {{context}}
 
                         Question: {{question}} [/INST]"""
@@ -78,7 +79,7 @@ class Chatbot:
                         If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.
                         <</SYS>>
 
-                        Context: 
+                        Context:
                         {context}
 
                         Question: {question} [/INST]"""
@@ -148,6 +149,16 @@ class Chatbot:
             azure_ai_search_service_name = os.getenv("AZURE_AI_SEARCH_SERVICE_NAME")
             azure_ai_search_index_name = os.getenv("AZURE_AI_SEARCH_INDEX_NAME")
             azure_ai_search_api_key = os.getenv("AZURE_AI_SEARCH_API_KEY")
+
+            if not azure_openai_api_key:
+                credential = DefaultAzureCredential()
+                access_token = credential.get_token("https://cognitiveservices.azure.com/.default")
+                os.environ["AZURE_OPENAI_AD_TOKEN"] = access_token.token
+
+            if not azure_ai_search_api_key:
+                search_credential = DefaultAzureCredential()
+                search_access_token = search_credential.get_token("https://search.azure.com/.default")
+                os.environ["AZURE_AI_SEARCH_AD_TOKEN"] = search_access_token.token
 
             llm = AzureChatOpenAI(
                 azure_deployment = os.getenv("AZURE_DEPLOYMENT"),

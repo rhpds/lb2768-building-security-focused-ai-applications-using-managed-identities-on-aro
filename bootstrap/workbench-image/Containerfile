@@ -15,7 +15,7 @@ RUN echo "tsflags=nodocs" | tee -a /etc/yum.conf && \
     yum install -y yum-utils && \
     yum-config-manager --enable crb && \
     yum install -y https://download.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
-    yum install -y $(cat os-ide/os-packages.txt) && \   
+    yum install -y $(cat os-ide/os-packages.txt) && \
     rm -f os-ide/os-packages.txt && \
     yum -y clean all --enablerepo='*' && \
     rm -rf /var/cache/dnf && \
@@ -80,7 +80,7 @@ RUN echo "Installing softwares and packages" && \
 
 # Copy Elyra runtime-images definitions and set the version
 COPY --chown=1001:0 runtime-images/ /opt/app-root/share/jupyter/metadata/runtime-images/
-RUN sed -i "s/RELEASE/2023c/" /opt/app-root/share/jupyter/metadata/runtime-images/*.json 
+RUN sed -i "s/RELEASE/2023c/" /opt/app-root/share/jupyter/metadata/runtime-images/*.json
 
 # Jupyter Server config to allow hidden files/folders in explorer. Ref: https://jupyterlab.readthedocs.io/en/latest/user/files.html#displaying-hidden-files
 # Jupyter Lab config to hide disabled exporters (WebPDF, Qtpdf, Qtpng)
@@ -89,5 +89,3 @@ COPY --chown=1001:0 etc/ /opt/app-root/etc/jupyter/
 WORKDIR /opt/app-root/src
 
 ENTRYPOINT ["start-notebook.sh"]
-
-

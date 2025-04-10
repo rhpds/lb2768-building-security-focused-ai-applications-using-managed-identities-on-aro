@@ -136,7 +136,8 @@ kfp-tekton==1.5.10; python_full_version >= '3.6.1'
 kiwisolver==1.4.7; python_version >= '3.8'
 kubernetes==25.3.0; python_version >= '3.6'
 langchain==0.1.20; python_version < '4.0' and python_full_version >= '3.8.1'
-langchain-community==0.0.38; python_version < '4.0' and python_full_version >= '3.8.1'
+https://github.com/paulczar/langchain/releases/download/azure-ai-search/langchain_community-0.3.21-py3-none-any.whl
+# langchain-community==0.0.38; python_version < '4.0' and python_full_version >= '3.8.1'
 langchain-core==0.1.52; python_version < '4.0' and python_full_version >= '3.8.1'
 langchain-openai==0.1.7; python_version < '4.0' and python_full_version >= '3.8.1'
 langchain-text-splitters==0.0.2; python_version < '4.0' and python_full_version >= '3.8.1'
@@ -261,6 +262,7 @@ tokenizers==0.20.0; python_version >= '3.7'
 tomli==2.0.1; python_version >= '3.7'
 tomlkit==0.13.2; python_version >= '3.8'
 torch==2.2.2+cpu
+# https://download.pytorch.org/whl/cpu-cxx11-abi/torch-2.2.2%2Bcpu.cxx11.abi-cp38-cp38-linux_x86_64.whl#sha256=fe0d4d0082f684cd7ef6592a0324ffafce6017925f3fdf10165abe5e89458d82
 torchvision==0.17.2; python_version >= '3.8'
 tornado==6.4.1; python_version >= '3.8'
 tqdm==4.66.5; python_version >= '3.7'

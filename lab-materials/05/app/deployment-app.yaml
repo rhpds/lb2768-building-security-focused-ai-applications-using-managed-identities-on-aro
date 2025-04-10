@@ -16,7 +16,9 @@ spec:
       labels:
         app: ic-app
         deployment: ic-app
+        azure.workload.identity/use: true
     spec:
+      serviceAccountName: parasol
       volumes:
         - name: dot-env
           secret:
@@ -28,7 +30,8 @@ spec:
               subPath: .env
               name: dot-env
               readOnly: true
-          image: ghcr.io/scorpiion/parasol-insurance/parasol-app:latest
+          image: ghcr.io/rh-mobb/rhoai-lab-insurance-claim-app:2.1.0
+          # ghcr.io/scorpiion/parasol-insurance/parasol-app:latest
           ports:
             - containerPort: 5000
               protocol: TCP
