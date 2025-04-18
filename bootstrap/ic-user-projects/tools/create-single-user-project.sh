@@ -308,6 +308,7 @@ metadata:
     opendatahub.io/dashboard: 'true'
     opendatahub.io/odh-managed: 'true'
     opendatahub.io/user: $USER_NAME
+    azure.workload.identity/use: "true"
 spec:
   template:
     spec:

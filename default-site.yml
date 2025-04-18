@@ -1,5 +1,5 @@
 site:
-  title: "OpenShift AI Unleashed: Transforming Claims Processing for Maximum Efficiency!"
+  title: "OpenShift AI on ARO w/ Managed Identities"
   url: https://redhat-scholars.github.io/course-template
   start_page: modules::index.adoc
 
@@ -9,7 +9,7 @@ ui:
   supplemental_files: ./content/supplemental-ui
 
 content:
-  edit_url: 'https://github.com/rh-aiservices-bu/parasol-insurance/edit/dev/{path}'
+  edit_url: 'https://github.com/rhpds/lb2768-building-security-focused-ai-applications-using-managed-identities-on-aro/edit/dev/{path}'
   sources:
     - url: ./
       start_path: content
