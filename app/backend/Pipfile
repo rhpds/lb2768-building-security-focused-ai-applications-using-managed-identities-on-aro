@@ -22,7 +22,7 @@ psycopg2-binary = "~=2.9.9"
 uvicorn = "~=0.29.0"
 websockets = "~=12.0"
 python-multipart = "0.0.9"
-torch = {version = "==2.2.2+cpu", index = "pytorch"}
+torch = {version = "==2.6.0", index = "pytorch"}
 
 [dev-packages]
 "watchdog[watchmedo]" = "~=4.0.0"
