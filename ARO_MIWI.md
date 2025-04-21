@@ -7,15 +7,15 @@
 Set Variables
 
 ```bash
-UUID=9263f0b1 #$(uuidgen | tr -d '-' | head -c 8 | tr '[:upper:]' '[:lower:]')
+UUID=9263f0b2 #$(uuidgen | tr -d '-' | head -c 8 | tr '[:upper:]' '[:lower:]')
 ARO_RP_SP_OBJECT_ID=$(az ad sp list --display-name "Azure Red Hat OpenShift RP" --query '[0].id' -o tsv)
 LOCATION=eastus
 RESOURCEGROUP=rg-aro-miwi$UUID
 DOMAIN=aro$UUID
 CLUSTER=aro-miwi$UUID
 VERSION=4.16.30
-PULL_SECRET=''
-SUBSCRIPTION=<ARO SUBSCRIPTION>
+PULL_SECRET=$(cat pull-secret.txt)
+SUBSCRIPTION=$(az account show --query id -o tsv)
 ```
 
 Create RG
@@ -88,8 +88,6 @@ az aro show \
 1. Create the identity (you should be logged into the Subscription of the ARO Cluster)
 
     ```bash
-    az account set --subscription "$SUBSCRIPTION"
-
     az identity create --name "${USER_ASSIGNED_IDENTITY_NAME}" --resource-group "${RESOURCEGROUP}"
     export USER_ASSIGNED_IDENTITY_OBJECT_ID="$(az identity show --name "${USER_ASSIGNED_IDENTITY_NAME}" --resource-group "${RESOURCEGROUP}" --query 'principalId' -otsv)"
     export USER_ASSIGNED_IDENTITY_CLIENT_ID="$(az identity show --name "${USER_ASSIGNED_IDENTITY_NAME}" --resource-group "${RESOURCEGROUP}" --query 'clientId' -otsv)"
@@ -126,13 +124,13 @@ az aro show \
 1. Annotate the service account with the Azure federated identity credential:
 
     ```bash
-    oc annotate sa ${SERVICE_ACCOUNT_NAME} azure.workload.identity/client-id=${USER_ASSIGNED_IDENTITY_CLIENT_ID}
+    oc -n $SERVICE_ACCOUNT_NAMESPACE annotate sa ${SERVICE_ACCOUNT_NAME} azure.workload.identity/client-id=${USER_ASSIGNED_IDENTITY_CLIENT_ID}
     ```
 
 1. Label the Pod with the user
 
     ```bash
-    oc label statefulset user azure.workload.identity/use=true
+    oc -n $SERVICE_ACCOUNT_NAMESPACE label notebook parasol azure.workload.identity/use=true
     ```
 
 ## misc notes
