@@ -14,8 +14,22 @@ The `requirements.txt` file used to build the container image is generated in th
 
 ## Build the image
 
-`podman build -t rhoai-lab-insurance-claim-workbench:x.y .`
+`podman build -t rhoai-lab-insurance-claim-workbench:miwi .`
 
 on a mac
 
-`podman build -t rhoai-lab-insurance-claim-workbench:x.y .`
+`podman build --platform linux/amd64 -t rhoai-lab-insurance-claim-workbench:miwi .`
+
+
+
+```
+pipenv
+openai
+
+# torch==2.2.2+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+
+azure-identity
+azure-search-documents
+https://github.com/paulczar/langchain/releases/download/azure-ai-search/langchain_community-0.3.21-py3-none-any.whl
+langchain-openai
+```

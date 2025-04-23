@@ -30,7 +30,7 @@ spec:
               subPath: .env
               name: dot-env
               readOnly: true
-          image: ghcr.io/rh-mobb/rhoai-lab-insurance-claim-app:2.1.0
+          image: ghcr.io/rh-mobb/rhoai-lab-insurance-claim-app:miwi
           # ghcr.io/scorpiion/parasol-insurance/parasol-app:latest
           ports:
             - containerPort: 5000

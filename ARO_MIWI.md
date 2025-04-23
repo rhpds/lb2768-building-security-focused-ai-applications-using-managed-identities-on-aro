@@ -74,7 +74,7 @@ az aro show \
     export USER_ASSIGNED_IDENTITY_NAME="$RESOURCEGROUP-identity"
     export FEDERATED_IDENTITY_CREDENTIAL_NAME="$RESOURCEGROUP-federated-identity"
     export SERVICE_ACCOUNT_NAMESPACE=user
-    export SERVICE_ACCOUNT_NAME="parasol"
+    export SERVICE_ACCOUNT_NAME="my-workbench" #"parasol"
     export LOCATION="eastus"
     export AI_SUBSCRIPTION=<SUBSCRIPTION where AI services live>
     export AI_RESOURCEGROUP="paul-ai"
@@ -123,6 +123,8 @@ az aro show \
 
 1. Annotate the service account with the Azure federated identity credential:
 
+    Run this for each workshop user
+
     ```bash
     oc -n $SERVICE_ACCOUNT_NAMESPACE annotate sa ${SERVICE_ACCOUNT_NAME} azure.workload.identity/client-id=${USER_ASSIGNED_IDENTITY_CLIENT_ID}
     ```
@@ -135,19 +137,22 @@ az aro show \
 
 ## misc notes
 
+```
 AZURE_OPENAI_ENDPOINT=https://paul-ai.openai.azure.com/
 OPENAI_API_VERSION=2024-12-01-preview
 AZURE_DEPLOYMENT=gpt-4o
 AZURE_EMBEDDING=text-embedding-3-small
 AZURE_AI_SEARCH_SERVICE_NAME="paul-ai"
 AZURE_AI_SEARCH_INDEX_NAME="paulai"
+```
 
 
 
+```
 az rest --method post \
-    --url https://graph.microsoft.com/beta/applications/{objectId}/federatedIdentityCredentials
+    --url https://graph.microsoft.com/beta/applications/${USER_ASSIGNED_IDENTITY_OBJECT_ID}/federatedIdentityCredentials \
     --body "{'name': '${FEDERATED_IDENTITY_CREDENTIAL_NAME}1', 'issuer': '$ARO_OIDC_ISSUER', 'audiences': ['api://AzureADTokenExchange'], 'claimsMatchingExpression': {'value': 'claims[\'sub\'] matches \'system:serviceaccount:*:${SERVICE_ACCOUNT_NAME}\'', 'languageVersion': 1}}"
-
+```
 
 
 

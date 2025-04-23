@@ -21,7 +21,9 @@ DASHBOARD_ROUTE=https://$(oc get route rhods-dashboard -n redhat-ods-application
 
 # Define some variables
 WORKBENCH_NAME="my-workbench"
-WORKBENCH_IMAGE="ic-workbench:2.1.3"
+#WORKBENCH_IMAGE="ic-workbench:2.1.3"
+WORKBENCH_IMAGE="s2i-generic-data-science-notebook:2024.2"
+
 PIPELINE_ENGINE="Tekton"
 
 echo "Generating and apply resources for $USER_NAME..."
