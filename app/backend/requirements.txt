@@ -34,7 +34,7 @@ frozenlist==1.6.0
 fsspec==2025.3.2
 gpg==1.15.1
 greenlet==3.2.1
-h11==0.14.0
+h11==0.16.0
 httpcore==1.0.8
 httpx==0.28.1
 httpx-sse==0.4.0
