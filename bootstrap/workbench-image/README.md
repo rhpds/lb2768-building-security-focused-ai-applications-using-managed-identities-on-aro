@@ -14,11 +14,11 @@ The `requirements.txt` file used to build the container image is generated in th
 
 ## Build the image
 
-`podman build -t rhoai-lab-insurance-claim-workbench:miwi .`
+`podman build -t ghcr.io/rh-mobb/rhoai-lab-insurance-claim-workbench:miwi .`
 
 on a mac
 
-`podman build --platform linux/amd64 -t rhoai-lab-insurance-claim-workbench:miwi .`
+`podman build --platform linux/amd64 -t ghcr.io/rh-mobb/rhoai-lab-insurance-claim-workbench:miwi .`
 
 
 
