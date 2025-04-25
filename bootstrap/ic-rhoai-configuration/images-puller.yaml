@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: ic-workbench
-        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/ic-workbench:2.1.3
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/ic-workbench:miwi
         command: ["tail"]
         args: ["-f", "/dev/null"]
         resources:
@@ -195,7 +195,7 @@ spec:
     spec:
       containers:
       - name: ic-app
-        image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-app:2.1.2
+        image: ghcr.io/rh-mobb/rhoai-lab-insurance-claim-app:miwi
         command: ["tail"]
         args: ["-f", "/dev/null"]
         resources:

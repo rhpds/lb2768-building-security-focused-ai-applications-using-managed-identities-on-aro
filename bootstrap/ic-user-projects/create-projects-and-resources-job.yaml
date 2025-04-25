@@ -73,7 +73,7 @@ spec:
           # Define some variables
           WORKBENCH_NAME="my-workbench"
           #WORKBENCH_IMAGE="ic-workbench:2.1.3"
-          WORKBENCH_IMAGE="s2i-generic-data-science-notebook:2024.2"
+          WORKBENCH_IMAGE="ghcr.io/rh-mobb/rhoai-lab-insurance-claim-workbench:miwi"
           PIPELINE_ENGINE="Tekton"
 
           for i in $(seq 1 $user_count);
