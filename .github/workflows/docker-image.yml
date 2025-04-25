@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the application docker image
+      run: docker build ./app/ --file Dockerfile --tag ghcr.io/rh-mobb/rhoai-lab-insurance-claim-app:2.1.0
+    - name: Build the application docker image
+      run: docker build ./bootstrap/workbench-image --file Dockerfile --tag ghcr.io/rh-mobb/rhoai-lab-insurance-claim-workbench:miwi
