@@ -7,7 +7,7 @@ commonLabels:
 
 resources:
 # wave 0
-- azurefile-csi.yaml
+# - azurefile-csi.yaml
 # wave 1
 - workbench-imagestream.yaml
 - workbench-vscode-is.yaml
