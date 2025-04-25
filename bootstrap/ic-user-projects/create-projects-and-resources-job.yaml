@@ -333,8 +333,8 @@ spec:
             resources:
               requests:
                 storage: 5Gi
-            storageClassName: ocs-storagecluster-ceph-rbd
-            volumeMode: Filesystem
+            #storageClassName: ocs-storagecluster-ceph-rbd
+            #volumeMode: Filesystem
           EOF
 
           # Create the workbench

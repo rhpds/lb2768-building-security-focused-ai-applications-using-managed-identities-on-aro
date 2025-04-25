@@ -314,7 +314,7 @@ spec:
   resources:
     requests:
       storage: 5Gi
-  storageClassName: ocs-storagecluster-ceph-rbd
+  #storageClassName: ocs-storagecluster-ceph-rbd
   volumeMode: Filesystem
 EOF
 
