@@ -52,8 +52,8 @@ DASHBOARD_ROUTE=https://$(oc get route rhods-dashboard -n redhat-ods-application
 
 # Define some variables
 WORKBENCH_NAME="my-workbench"
-#WORKBENCH_IMAGE="ic-workbench:2.1.3"
-WORKBENCH_IMAGE="rhoai-lab-insurance-claim-workbench:miwi"
+WORKBENCH_IMAGE="ic-workbench:miwi"
+# WORKBENCH_IMAGE="rhoai-lab-insurance-claim-workbench:miwi"
 PIPELINE_ENGINE="Tekton"
 
 for i in $(seq 1 $user_count);
