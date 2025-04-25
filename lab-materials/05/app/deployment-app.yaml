@@ -18,7 +18,7 @@ spec:
         deployment: ic-app
         azure.workload.identity/use: "true"
     spec:
-      serviceAccountName: parasol
+      serviceAccountName: my-workbench
       volumes:
         - name: dot-env
           secret:
