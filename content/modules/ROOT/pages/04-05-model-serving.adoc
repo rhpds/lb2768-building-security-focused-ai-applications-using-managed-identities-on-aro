@@ -87,7 +87,7 @@ OpenVINO Model Server
 [.console-input]
 [source, text]
 [subs=attributes+]
-Standard
+Small
 ** Model route
 [.lines_space]
 [.console-input]

@@ -6,7 +6,7 @@ include::_attributes.adoc[]
 [.lines_space]
 [.console-input]
 [source, bash, subs="attributes+"]
-curl -O {azure_ai_info_url}
+curl -O .env {azure_ai_info_url}
 oc create secret generic dot-env --from-file .env
 
 - Let's find the Route of the {argocd} instance by running the following command in the Terminal:
@@ -46,7 +46,7 @@ spec:
   source:
     path: lab-materials/05/app
     repoURL: https://github.com/rhpds/lb2768-building-security-focused-ai-applications-using-managed-identities-on-aro.git
-    targetRevision: dev
+    targetRevision: main
   syncPolicy:
     automated:
       prune: true
