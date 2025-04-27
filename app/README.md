@@ -15,12 +15,13 @@ OCP
 ```
 oc new-project build
 
+oc new-build --name rhoai-lab-insurance-claim-app --binary
 oc start-build rhoai-lab-insurance-claim-app --from-dir=.
 
 # once finished...
 
-IMAGE=$(oc get build rhoai-lab-insurance-claim-app-2 -o json | jq -r '.status.outputDockerImageReference')
-DIGEST=$(oc get build rhoai-lab-insurance-claim-app-2 -o json | jq -r '.status.output.to.imageDigest')
+IMAGE=$(oc get build rhoai-lab-insurance-claim-app-3 -o json | jq -r '.status.outputDockerImageReference')
+DIGEST=$(oc get build rhoai-lab-insurance-claim-app-3 -o json | jq -r '.status.output.to.imageDigest')
 
 # make registry visible
 oc patch config.imageregistry.operator.openshift.io/cluster --patch='[{"op": "add", "path": "/spec/disableRedirect", "value": true}]' --type=json
