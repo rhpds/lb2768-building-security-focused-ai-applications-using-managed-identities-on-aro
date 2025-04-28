@@ -223,6 +223,7 @@ spec:
             name: pipelines-definition
             namespace: $USER_PROJECT
           spec:
+            dspVersion: v2
             apiServer:
               applyTektonCustomResource: true
               archiveLogs: false
