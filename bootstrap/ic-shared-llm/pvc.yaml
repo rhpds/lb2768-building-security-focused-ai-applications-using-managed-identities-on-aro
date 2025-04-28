@@ -15,4 +15,4 @@ spec:
     requests:
       storage: 50Gi
   # storageClassName: ocs-storagecluster-cephfs
-  volumeMode: Filesystem
+  # volumeMode: Filesystem

@@ -15,4 +15,4 @@ spec:
     requests:
       storage: 10Gi
   # storageClassName: ocs-storagecluster-cephfs
-  volumeMode: Filesystem
+  # volumeMode: Filesystem

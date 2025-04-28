@@ -56,7 +56,7 @@ WORKBENCH_IMAGE="ic-workbench:miwi"
 # WORKBENCH_IMAGE="rhoai-lab-insurance-claim-workbench:miwi"
 PIPELINE_ENGINE="Tekton"
 
-for i in $(seq 1 $user_count);
+for i in $(seq 6 11) ; #$(seq 1 $user_count);
 do
 
 # Construct dynamic variables
@@ -131,165 +131,6 @@ roleRef:
   name: route-reader
   apiGroup: rbac.authorization.k8s.io
 ---
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: elyra-pipelines-$WORKBENCH_NAME
-  namespace: $USER_PROJECT
-  labels:
-    opendatahub.io/dashboard: 'true'
-subjects:
-  - kind: ServiceAccount
-    name: $WORKBENCH_NAME
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: ds-pipeline-user-access-pipelines-definition
-EOF
-
-# Create Data Science Connections
-cat << EOF | oc apply -f-
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: create-ds-connections
-  namespace: $USER_PROJECT
-spec:
-  selector: {}
-  template:
-    spec:
-      containers:
-      - args:
-        - -ec
-        - |-
-          echo "Minio user: $MINIO_ROOT_USER"
-          echo "Minio pass: $MINIO_ROOT_PASSWORD"
-          echo "Internal service url: http://minio.ic-shared-minio.svc.cluster.local:9000/"
-          cat << EOF | oc apply -f-
-          apiVersion: v1
-          kind: Secret
-          metadata:
-            name: aws-connection-shared-minio---pipelines
-            labels:
-              opendatahub.io/dashboard: "true"
-              opendatahub.io/managed: "true"
-            annotations:
-              opendatahub.io/connection-type: s3
-              openshift.io/display-name: Shared Minio - pipelines
-          type: Opaque
-          stringData:
-            AWS_ACCESS_KEY_ID: $MINIO_ROOT_USER
-            AWS_SECRET_ACCESS_KEY: $MINIO_ROOT_PASSWORD
-            AWS_DEFAULT_REGION: us
-            AWS_S3_ENDPOINT: http://minio.ic-shared-minio.svc:9000
-            AWS_S3_BUCKET: $USER_NAME
-          EOF
-        command:
-        - /bin/bash
-        image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:95b359257a7716b5f8d3a672081a84600218d8f58ca720f46229f7bb893af2ab
-        imagePullPolicy: IfNotPresent
-        name: create-ds-connections
-      restartPolicy: Never
-      serviceAccount: demo-setup
-      serviceAccountName: demo-setup
-EOF
-
-# Set up the pipeline server
-cat << EOF | oc apply -f-
-apiVersion: datasciencepipelinesapplications.opendatahub.io/v1alpha1
-kind: DataSciencePipelinesApplication
-metadata:
-  finalizers:
-  - datasciencepipelinesapplications.opendatahub.io/finalizer
-  name: pipelines-definition
-  namespace: $USER_PROJECT
-spec:
-  apiServer:
-    applyTektonCustomResource: true
-    archiveLogs: false
-    autoUpdatePipelineDefaultVersion: true
-    collectMetrics: true
-    dbConfigConMaxLifetimeSec: 120
-    deploy: true
-    enableOauth: true
-    enableSamplePipeline: false
-    injectDefaultScript: true
-    stripEOF: true
-    terminateStatus: Cancelled
-    trackArtifacts: true
-  database:
-    mariaDB:
-      deploy: true
-      pipelineDBName: mlpipeline
-      pvcSize: 10Gi
-      username: mlpipeline
-  objectStorage:
-    externalStorage:
-      bucket: $USER_NAME
-      host: minio.ic-shared-minio.svc.cluster.local:9000
-      port: ''
-      s3CredentialsSecret:
-        accessKey: AWS_ACCESS_KEY_ID
-        secretKey: AWS_SECRET_ACCESS_KEY
-        secretName: aws-connection-shared-minio---pipelines
-      scheme: http
-      secure: false
-  persistenceAgent:
-    deploy: true
-    numWorkers: 2
-  scheduledWorkflow:
-    cronScheduleTimezone: UTC
-    deploy: true
-EOF
-
-# Create the Elyra secret
-cat << EOF | oc apply -f-
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: create-pipeline-secret
-  namespace: $USER_PROJECT
-spec:
-  selector: {}
-  template:
-    spec:
-      containers:
-      - args:
-        - -ec
-        - |-
-          echo -n 'Waiting for ds-pipeline-pipelines-definition route'
-          while ! oc get route ds-pipeline-pipelines-definition 2>/dev/null; do
-            echo -n .
-            sleep 5
-          done; echo
-
-          PIPELINE_ROUTE=https://\$(oc get route ds-pipeline-pipelines-definition -o jsonpath='{.spec.host}')
-
-          cat << EOF | oc apply -f-
-          apiVersion: v1
-          kind: Secret
-          metadata:
-            name: ds-pipeline-config
-            namespace: $USER_PROJECT
-          stringData:
-            odh_dsp.json: '{"display_name": "Data Science Pipeline", "metadata": {"tags": [],
-              "display_name": "Data Science Pipeline", "engine": "$PIPELINE_ENGINE", "auth_type": "KUBERNETES_SERVICE_ACCOUNT_TOKEN",
-              "api_endpoint": "\$PIPELINE_ROUTE",
-              "public_api_endpoint": "$DASHBOARD_ROUTE/pipelineRuns/$USER_PROJECT/pipelineRun/view/",
-              "cos_auth_type": "KUBERNETES_SECRET", "cos_secret": "aws-connection-shared-minio---pipelines",
-              "cos_endpoint": "$MINIO_HOST", "cos_bucket": "$USER_NAME",
-              "cos_username": "$MINIO_ROOT_USER", "cos_password": "$MINIO_ROOT_PASSWORD",
-              "runtime_type": "KUBEFLOW_PIPELINES"}, "schema_name": "kfp"}'
-          type: Opaque
-          EOF
-        command:
-        - /bin/bash
-        image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:95b359257a7716b5f8d3a672081a84600218d8f58ca720f46229f7bb893af2ab
-        imagePullPolicy: IfNotPresent
-        name: create-ds-connections
-      restartPolicy: Never
-      serviceAccount: demo-setup
-      serviceAccountName: demo-setup
 EOF
 
 # Create the workbench PVC
@@ -314,7 +155,6 @@ spec:
   resources:
     requests:
       storage: 5Gi
-  #storageClassName: ocs-storagecluster-ceph-rbd
   volumeMode: Filesystem
 EOF
 
@@ -395,8 +235,6 @@ spec:
           volumeMounts:
             - mountPath: /opt/app-root/src
               name: $WORKBENCH_NAME
-            - mountPath: /opt/app-root/runtimes
-              name: elyra-dsp-details
             - mountPath: /dev/shm
               name: shm
           image: >-
@@ -474,9 +312,6 @@ spec:
         - name: $WORKBENCH_NAME
           persistentVolumeClaim:
             claimName: $WORKBENCH_NAME
-        - name: elyra-dsp-details
-          secret:
-            secretName: ds-pipeline-config
         - emptyDir:
             medium: Memory
           name: shm
