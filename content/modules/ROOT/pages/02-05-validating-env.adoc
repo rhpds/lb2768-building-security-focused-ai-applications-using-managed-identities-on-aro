@@ -10,13 +10,17 @@ When you open your workbench you will see your "Launcher" tab:
 [.bordershadow]
 image::02/terminal.png[]
 +
-.. Run the following command to download the credentials to connect to various Azure AI services.
+.. Run the following command configure your access to Azure AI services.
 +
 [.lines_space]
 [.console-input]
 [source, bash, subs="attributes+"]
 cd
 wget {azure_ai_info_url}
+oc -n {user} annotate sa my-workbench \
+  azure.workload.identity/client-id={user_assigned_identity_client_id}
+oc -n {user} rollout restart statefulset my-workbench
+
 
 .. Close the terminal.
 
