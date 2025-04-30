@@ -32,7 +32,7 @@ HOST=$(oc get route default-route -n openshift-image-registry --template='{{ .sp
 podman login -u admin -p $(oc whoami -t) $HOST
 
 podman pull $HOST/build/rhoai-lab-insurance-claim-app@$DIGEST
-podman tag $HOST/build/rhoai-lab-insurance-claim-app@$DIGEST ghcr.io/rh-mobb/rhoai-lab-insurance-claim-app:2.1.0
-podman push ghcr.io/rh-mobb/rhoai-lab-insurance-claim-app:2.1.0
+podman tag $HOST/build/rhoai-lab-insurance-claim-app@$DIGEST ghcr.io/rh-mobb/rhoai-lab-insurance-claim-app:miwi
+podman push ghcr.io/rh-mobb/rhoai-lab-insurance-claim-app:miwi
 
 ```
