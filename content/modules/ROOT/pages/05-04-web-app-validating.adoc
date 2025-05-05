@@ -41,6 +41,8 @@ image::05/new-app-chat-icon.png[]
 
 The assistant will open and you can ask it questions about the claim. As we have seen in the RAG notebook, the assistant can rely on some documentation to answer your questions. For example, on claim **CLM202401** Try with: "Did Daniel have the right to pass at the red light?".
 
+The answer you receive here will be different from what is shown below, this is because the example below was using the IBM Granite model, whereas here we're using an OpenAI model served by Azure. The answers given should still be correct.
+
 [.bordershadow]
 image::05/new-app-chat.png[]
 

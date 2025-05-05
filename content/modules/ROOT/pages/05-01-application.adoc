@@ -20,6 +20,8 @@ The different components are:
 
 == Application Code
 
+This section is optional, feel free to skip straight to Deploying the application.
+
 If you want to have a look at the code of the application, you can do it directly from {rhoai}!
 
 - Close the different Jupyter tabs that may still be opened in your browser.

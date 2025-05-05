@@ -47,18 +47,14 @@ The output should look as follows:
 [source,console]
 ----
 Found Azure OpenAI Base Endpoint: https://eastus.api.cognitive.microsoft.com/
-Success: Minio is reachable on minio.ic-shared-minio.svc.cluster.local:9000
-Success: Gitea is reachable on gitea.gitea.svc.cluster.local:3000
-Success: Postgres Database is reachable on rhoai-ufrqkmda.postgres.database.azure.com:5432
 Success: LLM Service-FlanT5 is reachable on llm-flant5.ic-shared-llm.svc.cluster.local:3000
-Success: ModelMesh is reachable on modelmesh-serving.ic-shared-img-det.svc.cluster.local:8033
 ----
 
 If the output of this notebook looks suspicious, please inform the people leading the {ic}.
 
 == Overall view
 
-This is a summarized visualization of how the environment is laid out:
+This is a summarized visualization of how the environment is laid out (in some workshops a local PostgreSQL database will be used instead of Azure PostgreSQL):
 
 [.bordershadow]
 image::02/ic-eng-diag.drawio.png[]

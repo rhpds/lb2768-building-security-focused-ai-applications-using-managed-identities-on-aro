@@ -1,6 +1,9 @@
 = Overall Approach
 include::_attributes.adoc[]
 
+This section is optional, For the sake of time we recommend skipping ahead to Section 5,
+and coming back here if you have time at the end of the workshop.
+
 As part of this prototype, we investigated the use of the YOLOv8 model.
 This model can be found online at https://www.yolov8.com[yolov8,window=_blank] and downloaded.
 
