@@ -21,6 +21,7 @@ oc -n {user} annotate sa my-workbench \
   azure.workload.identity/client-id={user_assigned_identity_client_id}
 oc -n {user} rollout restart statefulset my-workbench
 
+.. Note that since we are using workload identities, we need to annotate our service account with the correct managed identity in Azure.
 
 .. Close the terminal.
 

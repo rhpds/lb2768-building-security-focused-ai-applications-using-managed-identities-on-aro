@@ -57,11 +57,12 @@ image::04/model-data-connection.png[model connection]
 
 In your project create a model server:
 
-* In the "Multi-model serving platform" type of model, click **Add model server**:
+* In the Models tab, click the **Select multi-model** button under "Multi-model serving platform":
 +
 [.bordershadow]
 image::04/add-model-server.png[]
 
+* Click the blue **Add model server** button
 * Here is the info you need to enter:
 
 ** Model server name:
@@ -87,7 +88,7 @@ OpenVINO Model Server
 [.console-input]
 [source, text]
 [subs=attributes+]
-Small
+Standard
 ** Model route
 [.lines_space]
 [.console-input]

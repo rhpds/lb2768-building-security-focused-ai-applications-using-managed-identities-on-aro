@@ -24,15 +24,15 @@ If you want to have a look at the code of the application, you can do it directl
 
 - Close the different Jupyter tabs that may still be opened in your browser.
 - Go back to the {rhoai} Dashboard.
-- Stop your Workbench by using the toggle.
+- Stop your Workbench by clicking **Stop** by your workbench then click **Stop Workbench** on the pop-up.
 
 +
 [.bordershadow]
-image::05/05-toggle-off-workbench.jpg[]
+image::05/05-toggle-off-workbench.png[]
 
 
 
--- You should probably give it 5 or 10 seconds to fully stop.
+- You should probably give it 5 or 10 seconds to fully stop.
 - Edit the Workbench configuration by clicking the 3 vertical dots on the right, then choose the **Edit workbench** button.
 +
 [.bordershadow]
@@ -44,13 +44,13 @@ image::05/stop-workbench.png[]
 image::05/05-change-to-vscode.jpg[]
 - Note that this is a Custom-built image added in this particular {ic-lab} to illustrate the flexibility of the {rhoai} platform. Not everyone wants to use Jupyter Notebooks for everything.
 
-- Then click on `Update workbench` at the bottom of the page:
+- Then click on **Update workbench** at the bottom of the page:
 +
 [.bordershadow]
 image::05/update-workbench.png[]
 
-- You can now start your Workbench again by using the toggle.
-- Once the Workbench is started, click on the **Open** Link.
+- You can now start your Workbench again by clicking **Start**.
+- Once the Workbench is started, click on the **My Workbench** Link.
 - You will be redirected to the VSCode IDE.
 - After logging in and accepting the authorization, VSCode will open.
 - The first time you connect to it, you must indicate that you trust the workspace.

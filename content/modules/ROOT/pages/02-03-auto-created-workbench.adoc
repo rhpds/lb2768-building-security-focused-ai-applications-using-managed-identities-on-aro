@@ -3,12 +3,12 @@ include::_attributes.adoc[]
 
 One of the components that was pre-created for you is the workbench.
 
-* If you click on the arrow next to the workbench, you can see some of the libraries included in it as well as how much resources it has been given.
+* Click on the Workbenches tab at the top, then click on the arrow next to the workbench, you can see some of the libraries included in it as well as how much resources it has been given.
 +
 [.bordershadow]
 image::02/02-03-pre-created-workbench-info.png[]
 
-* To connect to the workbench, click the **Open** link:
+* To connect to the workbench, click the **My Workbench** link:
 +
 [.bordershadow]
 image::02/02-03-open-link.png[]
