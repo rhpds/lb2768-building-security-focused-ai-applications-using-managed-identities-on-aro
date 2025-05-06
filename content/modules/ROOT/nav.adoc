@@ -22,7 +22,7 @@
 ** xref:03-05-retrieval-augmented-generation.adoc[3.5 Retrieval-Augmented Generation]
 ** xref:03-07-prompt-engineering.adoc[3.7 Prompt Engineering Exercise (Optional)]
 
-* 4. Image Processing
+* 4. Image Processing (Optional)
 ** xref:04-01-over-approach.adoc[4.1 Overall Approach]
 ** xref:04-02-car-recog.adoc[4.2 Car recognition]
 ** xref:04-03-model-retraining.adoc[4.3 Model retraining]

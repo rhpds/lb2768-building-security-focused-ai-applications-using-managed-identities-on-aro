@@ -11,6 +11,9 @@ When you open your workbench you will see your "Launcher" tab:
 image::02/terminal.png[]
 +
 .. Run the following command configure your access to Azure AI services.
+
+.. Note that since we are using workload identities, we need to annotate our service account with the correct managed identity in Azure, this will allow your workloads to authenticate directly to Azure Services without having to provide a password or secret-key.  The final command will restart your workbench, Feel free to close the tag and then re-open your workbench when it is running again.
+
 +
 [.lines_space]
 [.console-input]
@@ -21,7 +24,7 @@ oc -n {user} annotate sa my-workbench \
   azure.workload.identity/client-id={user_assigned_identity_client_id}
 oc -n {user} rollout restart statefulset my-workbench
 
-.. Note that since we are using workload identities, we need to annotate our service account with the correct managed identity in Azure.
+
 
 .. Close the terminal.
 
