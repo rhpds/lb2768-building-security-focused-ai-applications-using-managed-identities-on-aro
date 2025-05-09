@@ -10,23 +10,67 @@ When you open your workbench you will see your "Launcher" tab:
 [.bordershadow]
 image::02/terminal.png[]
 +
-.. Run the following command configure your access to Azure AI services.
-
-.. Note that since we are using workload identities, we need to annotate our service account with the correct managed identity in Azure, this will allow your workloads to authenticate directly to Azure Services without having to provide a password or secret-key.  The final command will restart your workbench, Feel free to close the tag and then re-open your workbench when it is running again.
-
+.. Run the following command to download a `.env` file that will be used by the Jupiter Notebooks to configure access to the Azure AI services
 +
+
 [.lines_space]
 [.console-input]
 [source, bash, subs="attributes+"]
 cd
 wget {azure_ai_info_url}
+cat .env
+
+. The `.env` file that is downloaded will look something like the following (but configured for your enviornment).  Note there are no credentials in it.  That is because the Azure Python SDK will use Azure Managed Identity (via OIDC) to authenticate your pods which are running under a trusted `ServiceAccount`, We'll finish up this trust relationship shortly.
++
+
+[.lines_space]
+[.console-input]
+[source, bash, subs="attributes+"]
+AZURE_OPENAI_ENDPOINT=https://my-ai-service.cognitiveservices.azure.com/
+OPENAI_API_VERSION=2024-12-01-preview
+AZURE_DEPLOYMENT=gpt-4
+AZURE_EMBEDDING=text-embeddings
+AZURE_AI_SEARCH_SERVICE_NAME="my-ai-search"
+AZURE_AI_SEARCH_INDEX_NAME="my-ai-index"
+
+
+. When configuring Managed Identity, you need to create an Azure Managed Identity for the workload to use, Attach approprite roles and scopes to give it access to Azure resources, and then create a Federated Identity which creates the trust relationship between the Identity and the OpenShift ServiceAccount that will be running your `pods`.
++
+
+**Do not run the following commands** they have already been run for you, and are shown here to show you the Managed Identity relationship setup.
++
+
+[.lines_space]
+[.console-input]
+[source, bash, subs="attributes+"]
+# az identity create --name "${user}-id" --resource-group "aro"
+# export OBJECT_ID="$(az identity show --name "${user}-id" \
+#    --resource-group "aro" --query 'principalId' -otsv)"
+# export CLIENT_ID="$(az identity show --name "${user}-id" \
+#    --resource-group "aro" --query 'clientId' -otsv)"
+# export AI_SEARCH_SCOPE="/subscriptions/XXX/resourceGroups/aro-ai/providers/Microsoft.Search/searchServices/ai"
+# export AI_SCOPE="/subscriptions/XXX/resourceGroups/aro-ai/providers/Microsoft.CognitiveServices/accounts/ai"
+# az role assignment create --assignee-object-id "${OBJECT_ID}" \
+#    --role "Search Index Data Reader" \
+#    --scope "$AI_SEARCH_SCOPE" \
+#    --assignee-principal-type ServicePrincipal
+# az role assignment create --assignee-object-id "${OBJECT_ID}" \
+#    --role "Cognitive Services OpenAI User" \
+#    --scope "$AI_SCOPE" \
+#    --assignee-principal-type ServicePrincipal
+
+. This final command, which you will run in your terminal will annotate the `my-workbench` service account which the Jupyter Notebook, and later your deployed application will use to authenticate to the Azure services following the trust relationship built in the previous command.
++
+
+[.lines_space]
+[.console-input]
+[source, bash, subs="attributes+"]
 oc -n {user} annotate sa my-workbench \
   azure.workload.identity/client-id={user_assigned_identity_client_id}
 oc -n {user} rollout restart statefulset my-workbench
 
-
-
-.. Close the terminal.
+. After a moment you'll get a message that says **"Server unavailable or unreachable
+Your server at /notebook/{user}/my-workbench/ is not running. Would you like to restart it?"**, This is because the Jupyter notebook is restarting so that it can use the Azure Managed Identity that we just linked to the service account.  Wait a minute or so and then refresh your browser window.
 
 . In the left hand navigation menu, navigate to the folder called: `parasol-insurance/lab-materials/02`
 
