@@ -86,7 +86,7 @@ typing-extensions==4.11.0; python_version >= '3.8'
 typing-inspect==0.9.0
 tzdata==2024.1; python_version >= '2'
 ujson==5.9.0; python_version >= '3.8'
-urllib3==2.2.1; python_version >= '3.10'
+urllib3==1.26.19; python_version >= '3.10'
 uvicorn==0.29.0; python_version >= '3.8'
 websockets==12.0; python_version >= '3.8'
 yarl==1.9.4; python_version >= '3.7'
