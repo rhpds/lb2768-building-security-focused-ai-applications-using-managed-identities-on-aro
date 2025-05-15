@@ -58,6 +58,12 @@ AZURE_AI_SEARCH_INDEX_NAME="my-ai-index"
 #    --role "Cognitive Services OpenAI User" \
 #    --scope "$AI_SCOPE" \
 #    --assignee-principal-type ServicePrincipal
+# az identity federated-credential create \
+#    --name "${user}-id" \
+#    --identity-name "${user}-id" \
+#    --resource-group "aro-ai" \
+#    --issuer "<aro-id-issuer>" \
+#    --subject "system:serviceaccount:{user}:workbench"
 
 . This final command, which you will run in your terminal will annotate the `my-workbench` service account which the Jupyter Notebook, and later your deployed application will use to authenticate to the Azure services following the trust relationship built in the previous command.
 +
