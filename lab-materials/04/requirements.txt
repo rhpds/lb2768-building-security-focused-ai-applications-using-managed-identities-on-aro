@@ -156,7 +156,7 @@ notebook==6.5.6; python_version >= '3.7'
 notebook-shim==0.2.4; python_version >= '3.7'
 numpy==1.26.4; python_version >= '3.9'
 oauthlib==3.2.2; python_version >= '3.6'
-onnx==1.15.0; python_version >= '3.8'
+onnx==1.17.0; python_version >= '3.8'
 onnxruntime==1.17.3
 openai==1.14.1; python_full_version >= '3.7.1'
 opencv-python-headless==4.9.0.80; python_version >= '3.6'
