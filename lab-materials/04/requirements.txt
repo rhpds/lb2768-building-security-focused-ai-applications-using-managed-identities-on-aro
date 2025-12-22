@@ -135,7 +135,7 @@ langchain-text-splitters==0.0.1; python_version < '4.0' and python_full_version 
 langsmith==0.1.48; python_version < '4.0' and python_full_version >= '3.8.1'
 markdown-it-py==3.0.0; python_version >= '3.8'
 markupsafe==2.1.5; python_version >= '3.7'
-marshmallow==3.21.1; python_version >= '3.8'
+marshmallow==3.26.2; python_version >= '3.8'
 matplotlib==3.8.4; python_version >= '3.9'
 matplotlib-inline==0.1.7; python_version >= '3.8'
 mccabe==0.7.0
