@@ -269,7 +269,7 @@ wcwidth==0.2.13
 webcolors==1.13
 webencodings==0.5.1
 websocket-client==1.7.0; python_version >= '3.8'
-werkzeug==3.0.2; python_version >= '3.8'
+werkzeug==3.1.5; python_version >= '3.8'
 whatthepatch==1.0.5
 wheel==0.43.0; python_version >= '3.8'
 widgetsnbextension==4.0.10; python_version >= '3.7'
