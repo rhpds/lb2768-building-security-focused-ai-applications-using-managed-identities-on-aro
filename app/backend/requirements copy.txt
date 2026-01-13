@@ -21,7 +21,7 @@ distro==1.9.0; python_version >= '3.6'
 einops==0.7.0; python_version >= '3.8'
 environs==9.5.0; python_version >= '3.6'
 fastapi==0.110.1; python_version >= '3.8'
-filelock==3.13.4; python_version >= '3.8'
+filelock==3.20.3; python_version >= '3.8'
 frozenlist==1.4.1; python_version >= '3.8'
 fsspec==2024.3.1; python_version >= '3.8'
 greenlet==3.0.3; platform_machine == 'aarch64' or (platform_machine == 'ppc64le' or (platform_machine == 'x86_64' or (platform_machine == 'amd64' or (platform_machine == 'AMD64' or (platform_machine == 'win32' or platform_machine == 'WIN32')))))
