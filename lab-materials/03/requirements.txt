@@ -180,7 +180,7 @@ parso==0.8.4; python_version >= '3.6'
 pathspec==0.12.1; python_version >= '3.8'
 pexpect==4.9.0
 pillow==10.4.0; python_version >= '3.8'
-pip==24.2; python_version >= '3.8'
+pip==26.0; python_version >= '3.8'
 platformdirs==4.3.6; python_version >= '3.8'
 plotly==5.20.0; python_version >= '3.8'
 pluggy==1.5.0; python_version >= '3.8'
