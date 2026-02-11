@@ -11,7 +11,7 @@ azure-search-documents==11.5.2
 certifi==2025.1.31
 cffi==1.17.1
 charset-normalizer==3.4.1
-cryptography==44.0.2
+cryptography==46.0.5
 dataclasses-json==0.6.7
 distlib==0.3.9
 distro==1.9.0
